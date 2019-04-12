@@ -1,5 +1,5 @@
 <?php
-// $Id: Xml.php 7222 2017-07-10 16:56:48Z markus $
+// $Id: Xml.php 7657 2019-04-12 21:26:58Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa;

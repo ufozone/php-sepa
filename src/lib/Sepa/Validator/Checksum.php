@@ -1,5 +1,5 @@
 <?php
-// $Id: Checksum.php 7089 2017-07-04 18:48:12Z markus $
+// $Id: Checksum.php 7657 2019-04-12 21:26:58Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa\Validator;

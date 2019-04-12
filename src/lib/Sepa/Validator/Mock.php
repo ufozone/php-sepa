@@ -1,5 +1,5 @@
 <?php
-// $Id: Mock.php 7281 2017-07-13 08:36:10Z markus $
+// $Id: Mock.php 7657 2019-04-12 21:26:58Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa\Validator;

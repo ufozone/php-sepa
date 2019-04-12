@@ -1,5 +1,5 @@
 <?php
-// $Id: Iban.php 7087 2017-07-04 18:46:53Z markus $
+// $Id: Iban.php 7657 2019-04-12 21:26:58Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa\Validator;

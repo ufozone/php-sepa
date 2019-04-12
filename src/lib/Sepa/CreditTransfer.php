@@ -1,5 +1,5 @@
 <?php
-// $Id: CreditTransfer.php 7387 2017-08-07 12:19:14Z markus $
+// $Id: CreditTransfer.php 7657 2019-04-12 21:26:58Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa;

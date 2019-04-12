@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Von der Deutschen Kreditwirtschaft bereitgestelltes Technical Validation Subset (TVS) für die SEPA-Überweisung; darüber hinaus auch nutzbar für taggleiche Eilzahlungen (non-SEPA) -->
-<!-- Version gemäß DFÜ-Abkommen Anlage 3, Version 3.0, gültig ab November 2016 mit Umsetzung der EPC SCT IG 8.0 - Namespace analog ISO 20022 Edition 2009, da voll kompatibel, zudem inkl. aller EPC-Vorgaben -->
-<!-- Mit XMLSpy v2008 rel. 2 sp2 (http://www.altova.com) im März 2016 von der SIZ GmbH (Wenzel) bearbeitet -->
+<!-- Version gemäß DFÜ-Abkommen Anlage 3, Version 3.1, gültig ab November 2017 gemäß EPC IG ,  Namespace analog ISO 20022 Edition 2009, voll kompatibel zu allen EPC-Vorgaben -->
+<!-- Ab November 2017 sind ControlSum und Number of Transactions im Group Header und auf Payment Information Ebene Pflichtfelder. Das TVS der DK trägt nun den Dateinamen _GBIC_2 -->
+<!-- Mit XMLSpy v2008 rel. 2 sp2 (http://www.altova.com) von der SIZ GmbH (Wenzel) im Februar 2017 bearbeitet -->
 <xs:schema xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03" elementFormDefault="qualified">
 	<xs:element name="Document" type="Document"/>
 	<xs:complexType name="AccountIdentificationSEPA">
@@ -240,7 +241,7 @@ RF Creditor Reference may be used (ISO 11649).</xs:documentation>
 			<xs:element name="MsgId" type="RestrictedIdentificationSEPA1"/>
 			<xs:element name="CreDtTm" type="ISODateTime"/>
 			<xs:element name="NbOfTxs" type="Max15NumericText"/>
-			<xs:element name="CtrlSum" type="DecimalNumber" minOccurs="0"/>
+			<xs:element name="CtrlSum" type="DecimalNumber"/>
 			<xs:element name="InitgPty" type="PartyIdentificationSEPA1"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -353,8 +354,8 @@ in length.</xs:documentation>
 					<xs:documentation>If present and contains ‘true’, batch booking is requested. If present and contains ‘false’, booking per transaction is requested. If element is not present, pre-agreed customer-to-bank conditions apply.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="NbOfTxs" type="Max15NumericText" minOccurs="0"/>
-			<xs:element name="CtrlSum" type="DecimalNumber" minOccurs="0"/>
+			<xs:element name="NbOfTxs" type="Max15NumericText"/>
+			<xs:element name="CtrlSum" type="DecimalNumber"/>
 			<xs:element name="PmtTpInf" type="PaymentTypeInformationSCT1" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>If used, it is recommended to be used only at ‘Payment Information’ level and not at Credit Transfer Transaction Information’ level.

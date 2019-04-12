@@ -1,5 +1,5 @@
 <?php
-// $Id: Id1.php 7027 2017-06-16 07:22:34Z markus $
+// $Id: Id1.php 7657 2019-04-12 21:26:58Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa\Validator;

@@ -1,5 +1,5 @@
 <?php
-// $Id: Exception.php 7216 2017-07-08 17:04:11Z markus $
+// $Id: Exception.php 7657 2019-04-12 21:26:58Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa\Transaction;

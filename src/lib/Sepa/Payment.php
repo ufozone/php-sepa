@@ -1,5 +1,5 @@
 <?php
-// $Id: Payment.php 7385 2017-08-07 12:16:40Z markus $
+// $Id: Payment.php 7657 2019-04-12 21:26:58Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa;
