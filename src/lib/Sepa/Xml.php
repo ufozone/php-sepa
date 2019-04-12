@@ -1,5 +1,5 @@
 <?php
-// $Id: Xml.php 7657 2019-04-12 21:26:58Z markus $
+// $Id: Xml.php 7659 2019-04-12 22:45:54Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa;
@@ -142,6 +142,26 @@ class Xml
 		$this->fnlFile = $filename;
 		
 		return true;
+	}
+	
+	/**
+	 * download XML
+	 *
+	 * @param string $filename
+	 * @return void
+	 */
+	public function download(string $filename = '') : void
+	{
+		if (!$filename = trim($filename))
+		{
+			$filename = 'sepa.xml';
+		}
+		header('Content-Type: text/xml');
+		header('Content-Disposition: attachment; filename="' + $filename + '"');
+		header('Pragma: no-cache');
+		
+		echo $this->get();
+		exit;
 	}
 	
 	/**
