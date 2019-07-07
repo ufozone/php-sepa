@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Von der Deutschen Kreditwirtschaft bereitgestelltes Technical Validation Subset (TVS) für die SEPA-Lastschrift (nutzbar für CORE und B2B) -->
-<!-- Version gemäß DFÜ-Abkommen Anlage 3, Version 3.1 gemäß EPC Vorgaben, gültig ab November 2017, Namespace analog ISO 20022 Edition 2009, kompatibel zu allen EPC-Vorgaben -->
-<!-- Payment Type Information kann nun auf Payment Block - und Transaktionsebene angegeben werden. Das TVS der DK trägt nun den Dateinamen _GBIC_2 - Angabe von ControlSum und Anzahl Transaktionen ist im Group Header nun verpflichtend -->
-<!-- Mit XMLSpy v2008 rel. 2 (http://www.altova.com) von Wenzel (SIZ Bonn) bearbeitet -->
-<!-- Eine letzte Überarbeitung erfolgte am 16.03.2017 -->
+<!-- Version gemäß DFÜ-Abkommen Anlage 3, Version 3.3 gemäß EPC Vorgaben, gültig ab November 2019, Namespace analog ISO 20022 Edition 2009, kompatibel zu allen EPC-Vorgaben -->
+<!-- Mit XMLSpy v2008 im Februar 2019 von der SIZ GmbH (Wenzel) bearbeitet. GBIC_3 hat gegenüber GBIC_2 KEINE Änderungen. Die Hochnummerierung ist nur einer einheitlichen Benennung der ab V 3.3 gültigen DK-TVS geschuldet.  -->
 <xs:schema xmlns="urn:iso:std:iso:20022:tech:xsd:pain.008.001.02" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:iso:std:iso:20022:tech:xsd:pain.008.001.02" elementFormDefault="qualified">
 	<xs:element name="Document" type="Document"/>
 	<xs:complexType name="AccountIdentificationSEPA">

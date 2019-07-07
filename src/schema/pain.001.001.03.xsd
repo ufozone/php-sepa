@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Von der Deutschen Kreditwirtschaft bereitgestelltes Technical Validation Subset (TVS) für die SEPA-Überweisung; darüber hinaus auch nutzbar für taggleiche Eilzahlungen (non-SEPA) -->
-<!-- Version gemäß DFÜ-Abkommen Anlage 3, Version 3.1, gültig ab November 2017 gemäß EPC IG ,  Namespace analog ISO 20022 Edition 2009, voll kompatibel zu allen EPC-Vorgaben -->
-<!-- Ab November 2017 sind ControlSum und Number of Transactions im Group Header und auf Payment Information Ebene Pflichtfelder. Das TVS der DK trägt nun den Dateinamen _GBIC_2 -->
-<!-- Mit XMLSpy v2008 rel. 2 sp2 (http://www.altova.com) von der SIZ GmbH (Wenzel) im Februar 2017 bearbeitet -->
+<!-- Von der Deutschen Kreditwirtschaft bereitgestelltes Technical Validation Subset (TVS) für die SEPA-Überweisung -->
+<!-- Darüber hinaus auch nutzbar für die SEPA-Echtzeitüberweisung (Terminierung nur mit Tagesangabe - für Angabe einer Uhrzeit wäre das TVS pain.001.001.08_GBIC_3 heranzuziehen. -->
+<!-- Das TVS kann auch für taggleiche Euro-Eilzahlungen (non-SEPA) verwendet werden -->
+<!-- Version gemäß DFÜ-Abkommen Anlage 3, Version 3.3, gültig ab November 2019 gemäß EPC IG ,  Namespace analog ISO 20022 Edition 2009, voll kompatibel zu allen EPC-Vorgaben -->
+<!-- Wichtiger Hinweis: Für Anlage 3 V 3.3 werden alle DK-SEPA-TVS als GBIC_3-Dateien bereitgestellt. Änderungen gab es jedoch LEDIGLICH für die Überweisung! -->
+<!-- Mit XMLSpy v2008 rel. 2 (http://www.altova.com) von Wenzel (SIZ Bonn) bearbeitet -->
 <xs:schema xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03" elementFormDefault="qualified">
 	<xs:element name="Document" type="Document"/>
 	<xs:complexType name="AccountIdentificationSEPA">
@@ -392,6 +394,11 @@ When Instruction Priority is to be used, ‘Payment Type Information’ must be 
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="SvcLvl" type="ServiceLevel"/>
+			<xs:element name="LclInstrm" type="LocalInstrumentSEPA" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Only ‘INST’ allowed for SCT inst. Not present for SCT</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="CtgyPurp" type="CategoryPurposeSEPA" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Depending on the agreement between the Originator and the Originator Bank, ‘Category Purpose’ may be forwarded to the Beneficiary Bank.</xs:documentation>
@@ -402,6 +409,11 @@ When Instruction Priority is to be used, ‘Payment Type Information’ must be 
 	<xs:complexType name="PaymentTypeInformationSCT2">
 		<xs:sequence>
 			<xs:element name="SvcLvl" type="ServiceLevel"/>
+			<xs:element name="LclInstrm" type="LocalInstrumentSEPA" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Only ‘INST’ allowed for SCT inst. Not present for SCT</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="CtgyPurp" type="CategoryPurposeSEPA" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Depending on the agreement between the Originator and the Originator Bank, ‘Category Purpose’ may be forwarded to the Beneficiary Bank.</xs:documentation>
@@ -471,6 +483,17 @@ When Instruction Priority is to be used, ‘Payment Type Information’ must be 
 	<xs:simpleType name="RestrictedIdentificationSEPA1">
 		<xs:restriction base="xs:string">
 			<xs:pattern value="([A-Za-z0-9]|[\+|\?|/|\-|:|\(|\)|\.|,|'| ]){1,35}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="LocalInstrumentSEPA">
+		<xs:sequence>
+			<xs:element name="Cd" type="ExternalLocalInstrument1Code"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ExternalLocalInstrument1Code">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="35"/>
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>
