@@ -87,6 +87,6 @@ $xml->download('sepa.xml');
 
 ## External Resources
 
-* [German specification for remote data transfer between customer and bank according to the DFÜ agreement "Specification of Data Formats"](http://www.ebics.de/index.php?id=77)
-* [ECB SEPA gateway page](http://www.ecb.europa.eu/paym/retpaym/html/index.en.html)
+* [German specification for remote data transfer between customer and bank according to the DFÜ agreement "Specification of Data Formats"](https://www.ebics.de/de/datenformate)
+* [ECB SEPA gateway page](https://www.ecb.europa.eu/paym/integration/retail/sepa/html/index.en.html)
 * [ISO20022 Message Catalog](https://www.iso20022.org/full_catalogue.page)
