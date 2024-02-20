@@ -1,5 +1,5 @@
 <?php
-// $Id: Xml.php 7659 2019-04-12 22:45:54Z markus $
+// $Id: Xml.php 8738 2024-02-20 23:38:55Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa;
@@ -157,7 +157,7 @@ class Xml
 			$filename = 'sepa.xml';
 		}
 		header('Content-Type: text/xml');
-		header('Content-Disposition: attachment; filename="' + $filename + '"');
+		header('Content-Disposition: attachment; filename="' . $filename . '"');
 		header('Pragma: no-cache');
 		
 		echo $this->get();
