@@ -1,5 +1,5 @@
 <?php
-// $Id: CreditorId.php 7657 2019-04-12 21:26:58Z markus $
+// $Id: CreditorId.php 8745 2024-03-28 17:08:31Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa\Validator;
@@ -20,7 +20,7 @@ class CreditorId implements \MG\Sepa\Validator
 		{
 			return false;
 		}
-		// Stelle 7-35 (BBAN), Stelle 1-2 (Laendercode; numerisch konvertiert), Stelle 3-4 (Pruefziffer)
+		// Position 7-35 (BBAN), Position 1-2 (Country code; numerically converted), Position 3-4 (Check digit)
 		$checkSum = substr($subject, 7) . strval(ord($subject[0]) - 55) . strval(ord($subject[1]) - 55) . substr($subject, 2, 2);
 		
 		return ($this->calculateCheckDigit($checkSum) === 97);

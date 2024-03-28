@@ -1,5 +1,5 @@
 <?php
-// $Id: Transaction.php 7657 2019-04-12 21:26:58Z markus $
+// $Id: Transaction.php 8745 2024-03-28 17:08:31Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa;
@@ -117,7 +117,7 @@ class Transaction
 	private $validatorFactory;
 	
 	/**
-	 * constructor
+	 * Constructor
 	 * 
 	 * @param ValidatorFactory $validatorFactory
 	 */
@@ -127,7 +127,7 @@ class Transaction
 	}
 	
 	/**
-	 * set instruction identifier
+	 * Set instruction identifier
 	 * 
 	 * @param string $id
 	 * @throws TransactionException
@@ -149,7 +149,7 @@ class Transaction
 	}
 	
 	/**
-	 * get instruction identifier
+	 * Get instruction identifier
 	 * 
 	 * @return string
 	 */
@@ -159,7 +159,7 @@ class Transaction
 	}
 	
 	/**
-	 * set end-to-end identifier
+	 * Set end-to-end identifier
 	 * 
 	 * @param string $endToEndId
 	 * @throws TransactionException
@@ -181,7 +181,7 @@ class Transaction
 	}
 	
 	/**
-	 * get end-to-end identifier
+	 * Get end-to-end identifier
 	 * 
 	 * @return string
 	 */
@@ -191,7 +191,7 @@ class Transaction
 	}
 	
 	/**
-	 * set debtor/creditor name
+	 * Set debtor/creditor name
 	 * 
 	 * @param string $name
 	 * @throws TransactionException
@@ -209,7 +209,7 @@ class Transaction
 	}
 	
 	/**
-	 * get debtor/creditor name
+	 * Get debtor/creditor name
 	 * 
 	 * @return string
 	 */
@@ -219,7 +219,7 @@ class Transaction
 	}
 	
 	/**
-	 * set IBAN
+	 * Set IBAN
 	 * 
 	 * @param string $iban
 	 * @throws TransactionException
@@ -241,7 +241,7 @@ class Transaction
 	}
 	
 	/**
-	 * get IBAN
+	 * Get IBAN
 	 * 
 	 * @return string
 	 */
@@ -251,7 +251,7 @@ class Transaction
 	}
 	
 	/**
-	 * set BIC
+	 * Set BIC
 	 * 
 	 * @param string $bic
 	 * @throws TransactionException
@@ -273,7 +273,7 @@ class Transaction
 	}
 	
 	/**
-	 * get BIC
+	 * Get BIC
 	 * 
 	 * @return string
 	 */
@@ -283,7 +283,7 @@ class Transaction
 	}
 	
 	/**
-	 * set amount
+	 * Set amount
 	 * 
 	 * @param float $amount
 	 * @throws TransactionException
@@ -301,7 +301,7 @@ class Transaction
 	}
 	
 	/**
-	 * get amount
+	 * Get amount
 	 * 
 	 * @return int
 	 */
@@ -311,7 +311,7 @@ class Transaction
 	}
 	
 	/**
-	 * set currency
+	 * Set currency
 	 * 
 	 * @param string $currency
 	 * @throws TransactionException
@@ -334,7 +334,7 @@ class Transaction
 	}
 	
 	/**
-	 * get currency
+	 * Get currency
 	 * 
 	 * @return string
 	 */
@@ -344,7 +344,7 @@ class Transaction
 	}
 	
 	/**
-	 * set ultimate debtor or creditor
+	 * Set ultimate debtor or creditor
 	 * 
 	 * @param string $ultimateName
 	 * @return Transaction
@@ -357,7 +357,7 @@ class Transaction
 	}
 	
 	/**
-	 * get ultimate debtor or creditor
+	 * Get ultimate debtor or creditor
 	 * 
 	 * @return string
 	 */
@@ -367,7 +367,7 @@ class Transaction
 	}
 	
 	/**
-	 * set purpose code
+	 * Set purpose code
 	 * 
 	 * @param string $purpose
 	 * @throws TransactionException
@@ -390,7 +390,7 @@ class Transaction
 	}
 	
 	/**
-	 * get purpose code
+	 * Get purpose code
 	 * 
 	 * @return string
 	 */
@@ -400,7 +400,7 @@ class Transaction
 	}
 	
 	/**
-	 * set unstructured reference text
+	 * Set unstructured reference text
 	 * 
 	 * @param string $reference
 	 * @return Transaction
@@ -413,7 +413,7 @@ class Transaction
 	}
 	
 	/**
-	 * get unstructured reference text
+	 * Get unstructured reference text
 	 * 
 	 * @return string
 	 */
@@ -423,7 +423,7 @@ class Transaction
 	}
 	
 	/**
-	 * set mandate identifier
+	 * Set mandate identifier
 	 * 
 	 * @param string $mandateId
 	 * @throws TransactionException
@@ -445,7 +445,7 @@ class Transaction
 	}
 	
 	/**
-	 * get mandate identifier
+	 * Get mandate identifier
 	 * 
 	 * @return string
 	 */
@@ -455,7 +455,7 @@ class Transaction
 	}
 	
 	/**
-	 * set mandate date
+	 * Set mandate date
 	 * 
 	 * @param string $mandateDate
 	 * @throws TransactionException
@@ -477,7 +477,7 @@ class Transaction
 	}
 	
 	/**
-	 * get mandate date
+	 * Get mandate date
 	 * 
 	 * @return string
 	 */
@@ -487,7 +487,7 @@ class Transaction
 	}
 	
 	/**
-	 * set mandate changed
+	 * Set mandate changed
 	 * 
 	 * @return Transaction
 	 */
@@ -499,7 +499,7 @@ class Transaction
 	}
 	
 	/**
-	 * get mandate changed
+	 * Get mandate changed
 	 * 
 	 * @return bool
 	 */
@@ -509,7 +509,7 @@ class Transaction
 	}
 	
 	/**
-	 * set original mandate identifier
+	 * Set original mandate identifier
 	 * 
 	 * @param string $originalMandateId
 	 * @throws TransactionException
@@ -531,7 +531,7 @@ class Transaction
 	}
 	
 	/**
-	 * get original mandate identifier
+	 * Get original mandate identifier
 	 * 
 	 * @return string
 	 */
@@ -541,7 +541,7 @@ class Transaction
 	}
 	
 	/**
-	 * set original mandate IBAN
+	 * Set original mandate IBAN
 	 * 
 	 * @param string $originalMandateIban
 	 * @throws TransactionException
@@ -563,7 +563,7 @@ class Transaction
 	}
 	
 	/**
-	 * get original mandate IBAN
+	 * Get original mandate IBAN
 	 * 
 	 * @return string
 	 */
@@ -573,7 +573,7 @@ class Transaction
 	}
 	
 	/**
-	 * set original mandate BIC
+	 * Set original mandate BIC
 	 * 
 	 * @param string $originalMandateBic
 	 * @throws TransactionException
@@ -595,7 +595,7 @@ class Transaction
 	}
 	
 	/**
-	 * get original mandate BIC
+	 * Get original mandate BIC
 	 * 
 	 * @return string
 	 */
@@ -605,7 +605,7 @@ class Transaction
 	}
 	
 	/**
-	 * check necessary transaction data
+	 * Check necessary transaction data
 	 * 
 	 * @param bool $isDirectDebit
 	 * @throws TransactionException

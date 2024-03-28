@@ -1,5 +1,5 @@
 <?php
-// $Id: CreditTransfer.php 8739 2024-03-28 12:41:21Z markus $
+// $Id: CreditTransfer.php 8745 2024-03-28 17:08:31Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa;
@@ -16,7 +16,7 @@ use \MG\Sepa\Validator\Factory as ValidatorFactory;
 class CreditTransfer extends Sepa
 {
 	/**
-	 * the constructor
+	 * Constructor
 	 */
 	public function __construct(ValidatorFactory $validatorFactory)
 	{

@@ -1,5 +1,5 @@
 <?php
-// $Id: DirectDebit.php 8740 2024-03-28 16:03:37Z markus $
+// $Id: DirectDebit.php 8745 2024-03-28 17:08:31Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa;
@@ -16,7 +16,7 @@ use \MG\Sepa\Validator\Factory as ValidatorFactory;
 class DirectDebit extends Sepa
 {
 	/**
-	 * the constructor
+	 * Constructor
 	 */
 	public function __construct(ValidatorFactory $validatorFactory)
 	{

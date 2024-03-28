@@ -1,5 +1,5 @@
 <?php
-// $Id: Xml.php 8742 2024-03-28 16:17:50Z markus $
+// $Id: Xml.php 8745 2024-03-28 17:08:31Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa;
@@ -17,19 +17,19 @@ use \MG\Sepa\Xml\Exception as XmlException;
 class Xml
 {
 	/**
-	 * format XML without indentation and extra space
+	 * Format XML without indentation and extra space
 	 * @var bool
 	 */
 	private $compression = false;
 	
 	/**
-	 * temp file
+	 * Temp file
 	 * @var string
 	 */
 	private $tmpFile = null;
 	
 	/**
-	 * final file
+	 * Final file
 	 * @var string
 	 */
 	private $fnlFile = null;
@@ -41,7 +41,7 @@ class Xml
 	private $sepa = null;
 	
 	/**
-	 * create XML instance
+	 * Create XML instance
 	 * 
 	 * @param Sepa $sepa
 	 */
@@ -51,7 +51,7 @@ class Xml
 	}
 	
 	/**
-	 * delete temp file
+	 * Delete temp file
 	 */
 	public function __destruct()
 	{
@@ -59,7 +59,7 @@ class Xml
 	}
 	
 	/**
-	 * to string
+	 * To string
 	 * 
 	 * @return string
 	 */
@@ -69,19 +69,19 @@ class Xml
 	}
 	
 	/**
-	 * disable nicely formats output with indentation and extra space
+	 * Disable nicely formats output with indentation and extra space
 	 * 
 	 * @return Xml
 	 */
 	public function compress() : Xml
 	{
-		$this->compression = false;
+		$this->compression = true;
 		
 		return $this;
 	}
 	
 	/**
-	 * get XML
+	 * Get XML
 	 * 
 	 * @return string
 	 */
@@ -95,7 +95,7 @@ class Xml
 	}
 	
 	/**
-	 * save XML to file
+	 * Save XML to file
 	 * 
 	 * @param string $filename
 	 * @return bool
@@ -145,7 +145,7 @@ class Xml
 	}
 	
 	/**
-	 * download XML
+	 * Download XML
 	 *
 	 * @param string $filename
 	 * @return void
@@ -165,7 +165,7 @@ class Xml
 	}
 	
 	/**
-	 * generate the XML file
+	 * Generate the XML file
 	 * 
 	 * @throws XmlException
 	 * @return Xml
@@ -199,7 +199,7 @@ class Xml
 	}
 	
 	/**
-	 * validate XML
+	 * Validate XML
 	 * 
 	 * @throws XmlException
 	 * @return bool
@@ -208,7 +208,7 @@ class Xml
 	{
 		libxml_use_internal_errors(true);
 		
-		$xsdFile = $this->getPainFile();
+		$xsdFile = $this->getSchemaFile();
 		if ($this->tmpFile === null)
 		{
 			$this->create();
@@ -221,7 +221,12 @@ class Xml
 		return $xml->isValid();
 	}
 	
-	public function getPainFile() : string
+	/**
+	 * Get schema file
+	 * 
+	 * @return string
+	 */
+	public function getSchemaFile() : string
 	{
 		$xsdFile = __DIR__ . '/../../schema/' . $this->sepa->getPain() . '.xsd';
 		if (!is_file($xsdFile))
@@ -232,7 +237,7 @@ class Xml
 	}
 	
 	/**
-	 * get errors
+	 * Get errors
 	 * 
 	 * @return array
 	 */
@@ -247,7 +252,7 @@ class Xml
 	}
 	
 	/**
-	 * get last error
+	 * Get last error
 	 * 
 	 * @return Exception
 	 */
@@ -262,7 +267,7 @@ class Xml
 	}
 	
 	/**
-	 * destroy temp file
+	 * Destroy temp file
 	 */
 	private function cleanup()
 	{
@@ -274,7 +279,7 @@ class Xml
 	}
 	
 	/**
-	 * generate document root and group header
+	 * Generate document root and group header
 	 * 
 	 * @param \XMLWriter $xml
 	 */
@@ -329,7 +334,7 @@ class Xml
 	}
 	
 	/**
-	 * generate payment information
+	 * Generate payment information
 	 * 
 	 * @param Payment $payment
 	 * @param \XMLWriter $xml
@@ -460,7 +465,7 @@ class Xml
 	}
 	
 	/**
-	 * generate transaction information
+	 * Generate transaction information
 	 * 
 	 * @param Transaction $transaction
 	 * @param \XMLWriter $xml
@@ -504,7 +509,7 @@ class Xml
 			$xml->startElement('MndtRltdInf');
 			$xml->writeElement('MndtId', $transaction->getMandateId());
 			$xml->writeElement('DtOfSgntr', $transaction->getMandateDate());
-			if ($transaction->hasMandateChanged()) // Aenderung an Mandat
+			if ($transaction->hasMandateChanged()) // Mandate changed
 			{
 				$xml->writeElement('AmdmntInd', 'true');
 				$xml->startElement('AmdmntInfDtls');
@@ -577,7 +582,7 @@ class Xml
 	}
 	
 	/**
-	 * convert string into epc conform
+	 * Convert string into epc conform
 	 * 
 	 * @param string $string
 	 * @param int $maxlen
@@ -585,7 +590,7 @@ class Xml
 	 */
 	private function formatString(string $string, int $maxlen = 0) : string
 	{
-		// EPC 2009 erlaubt:
+		// EPC 2009 allowed:
 		// [A-Za-z0-9\+\?\/\-:\(\)\.,' ]
 		$map = [
 			'Ä' => 'Ae', 'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A', 'Å' => 'A', 'Ă' => 'A', 'Æ' => 'A',
@@ -614,7 +619,7 @@ class Xml
 	}
 	
 	/**
-	 * format amount
+	 * Format amount
 	 * 
 	 * @param int $amount
 	 * @return string

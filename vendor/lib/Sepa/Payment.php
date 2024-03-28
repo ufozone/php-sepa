@@ -1,5 +1,5 @@
 <?php
-// $Id: Payment.php 8740 2024-03-28 16:03:37Z markus $
+// $Id: Payment.php 8745 2024-03-28 17:08:31Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa;
@@ -99,7 +99,7 @@ class Payment
 	private $validatorFactory;
 	
 	/**
-	 * constructor
+	 * Constructor
 	 * 
 	 * @param ValidatorFactory $validatorFactory
 	 */
@@ -109,7 +109,7 @@ class Payment
 	}
 	
 	/**
-	 * set payment information identifier
+	 * Set payment information identifier
 	 * 
 	 * @param string $id
 	 * @throws PaymentException
@@ -131,7 +131,7 @@ class Payment
 	}
 	
 	/**
-	 * get payment information identifier
+	 * Get payment information identifier
 	 * 
 	 * @return string
 	 */
@@ -141,7 +141,7 @@ class Payment
 	}
 	
 	/**
-	 * set scope
+	 * Set scope
 	 * 
 	 * @param string $scope
 	 * @throws PaymentException
@@ -164,7 +164,7 @@ class Payment
 	}
 	
 	/**
-	 * get scope
+	 * Get scope
 	 * 
 	 * @return string
 	 */
@@ -174,7 +174,7 @@ class Payment
 	}
 	
 	/**
-	 * set sequence
+	 * Set sequence
 	 * 
 	 * @param string $sequence
 	 * @throws PaymentException
@@ -197,7 +197,7 @@ class Payment
 	}
 	
 	/**
-	 * get sequence
+	 * Get sequence
 	 * 
 	 * @return string
 	 */
@@ -207,7 +207,7 @@ class Payment
 	}
 	
 	/**
-	 * set creditor identifier
+	 * Set creditor identifier
 	 * 
 	 * @param string $creditorId
 	 * @throws PaymentException
@@ -229,7 +229,7 @@ class Payment
 	}
 	
 	/**
-	 * get creditor identifier
+	 * Get creditor identifier
 	 * 
 	 * @return string
 	 */
@@ -239,7 +239,7 @@ class Payment
 	}
 	
 	/**
-	 * set priority
+	 * Set priority
 	 * 
 	 * @param string $priority
 	 * @throws PaymentException
@@ -262,7 +262,7 @@ class Payment
 	}
 	
 	/**
-	 * get priority
+	 * Get priority
 	 * 
 	 * @return string
 	 */
@@ -272,7 +272,7 @@ class Payment
 	}
 	
 	/**
-	 * enable batch booking
+	 * Enable batch booking
 	 * 
 	 * @return Payment
 	 */
@@ -284,7 +284,7 @@ class Payment
 	}
 	
 	/**
-	 * disable batch booking
+	 * Disable batch booking
 	 * 
 	 * @return Payment
 	 */
@@ -296,7 +296,7 @@ class Payment
 	}
 	
 	/**
-	 * get batch booking
+	 * Get batch booking
 	 * 
 	 * @return bool
 	 */
@@ -306,7 +306,7 @@ class Payment
 	}
 	
 	/**
-	 * set execution date
+	 * Set execution date
 	 * 
 	 * @param string $date (YYYY-MM-DD)
 	 * @throws PaymentException
@@ -328,7 +328,7 @@ class Payment
 	}
 	
 	/**
-	 * get execution date
+	 * Get execution date
 	 * 
 	 * @return string
 	 */
@@ -338,7 +338,7 @@ class Payment
 	}
 	
 	/**
-	 * set applicant (debtor or creditor)
+	 * Set applicant (debtor or creditor)
 	 * 
 	 * @param string $name
 	 * @param string $iban
@@ -350,7 +350,7 @@ class Payment
 	{
 		$this->setAccountName($name);
 		$this->setAccountIban($iban);
-		if ($bic)
+		if ($bic !== '')
 		{
 			$this->setAccountBic($bic);
 		}
@@ -358,7 +358,7 @@ class Payment
 	}
 	
 	/**
-	 * set applicant name
+	 * Set applicant name
 	 * 
 	 * @param string $name
 	 * @throws PaymentException
@@ -376,7 +376,7 @@ class Payment
 	}
 	
 	/**
-	 * get applicant name
+	 * Get applicant name
 	 * 
 	 * @return string
 	 */
@@ -386,7 +386,7 @@ class Payment
 	}
 	
 	/**
-	 * set applicant IBAN
+	 * Set applicant IBAN
 	 * 
 	 * @param string $iban
 	 * @throws PaymentException
@@ -408,7 +408,7 @@ class Payment
 	}
 	
 	/**
-	 * get applicant IBAN
+	 * Get applicant IBAN
 	 *
 	 * @return string
 	 */
@@ -418,7 +418,7 @@ class Payment
 	}
 	
 	/**
-	 * set applicant BIC
+	 * Set applicant BIC
 	 * 
 	 * @param string $bic
 	 * @throws PaymentException
@@ -440,7 +440,7 @@ class Payment
 	}
 	
 	/**
-	 * get applicant BIC
+	 * Get applicant BIC
 	 * 
 	 * @return string
 	 */
@@ -450,7 +450,7 @@ class Payment
 	}
 	
 	/**
-	 * set account currency
+	 * Set account currency
 	 * 
 	 * @param string $currency
 	 * @throws PaymentException
@@ -473,7 +473,7 @@ class Payment
 	}
 	
 	/**
-	 * get applicant currency
+	 * Get applicant currency
 	 * 
 	 * @return string
 	 */
@@ -483,7 +483,7 @@ class Payment
 	}
 	
 	/**
-	 * set ultimate applicant
+	 * Set ultimate applicant
 	 * 
 	 * @param string $ultimateName
 	 * @return Payment
@@ -496,7 +496,7 @@ class Payment
 	}
 	
 	/**
-	 * get ultimate applicant
+	 * Get ultimate applicant
 	 * 
 	 * @return string
 	 */
@@ -506,7 +506,7 @@ class Payment
 	}
 	
 	/**
-	 * add transaction
+	 * Add transaction
 	 * 
 	 * @param Transaction $transaction
 	 * @return Payment
@@ -519,7 +519,7 @@ class Payment
 	}
 	
 	/**
-	 * get payment transactions
+	 * Get payment transactions
 	 * 
 	 * return array
 	 */
@@ -529,7 +529,7 @@ class Payment
 	}
 	
 	/**
-	 * counts the transactions in this payment collection
+	 * Counts the transactions in this payment collection
 	 * 
 	 * @return int
 	 */
@@ -539,7 +539,7 @@ class Payment
 	}
 	
 	/**
-	 * get control sum
+	 * Get control sum
 	 * 
 	 * @return int
 	 */
@@ -554,7 +554,7 @@ class Payment
 	}
 	
 	/**
-	 * check necessary payment data
+	 * Check necessary payment data
 	 * 
 	 * @param bool $isDirectDebit
 	 * @throws PaymentException

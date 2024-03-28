@@ -1,5 +1,5 @@
 <?php
-// $Id: Checksum.php 7657 2019-04-12 21:26:58Z markus $
+// $Id: Checksum.php 8745 2024-03-28 17:08:31Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa\Validator;
@@ -13,7 +13,7 @@ namespace MG\Sepa\Validator;
 trait Checksum
 {
 	/**
-	 * calculate check digit (ISO 13616:2007)
+	 * Calculate check digit (ISO 13616:2007)
 	 *
 	 * @param string $checkSum
 	 * @return int

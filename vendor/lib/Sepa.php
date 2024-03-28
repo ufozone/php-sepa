@@ -1,5 +1,5 @@
 <?php
-// $Id: Sepa.php 8740 2024-03-28 16:03:37Z markus $
+// $Id: Sepa.php 8745 2024-03-28 17:08:31Z markus $
 declare(strict_types=1);
 
 namespace MG;
@@ -65,14 +65,14 @@ abstract class Sepa
 	private $payments = [];
 	
 	/**
-	 * constructor
+	 * Constructor
 	 * 
 	 * @param ValidatorFactory $validatorFactory
 	 */
 	abstract public function __construct(ValidatorFactory $validatorFactory);
 	
 	/**
-	 * get type
+	 * Get type
 	 * 
 	 * @return int
 	 */
@@ -82,7 +82,7 @@ abstract class Sepa
 	}
 	
 	/**
-	 * get pain mode
+	 * Get pain mode
 	 * 
 	 * @return string
 	 */
@@ -92,7 +92,7 @@ abstract class Sepa
 	}
 	
 	/**
-	 * set message identifier
+	 * Set message identifier
 	 * 
 	 * @param string $id
 	 * @throws SepaException
@@ -114,7 +114,7 @@ abstract class Sepa
 	}
 	
 	/**
-	 * get message identifier
+	 * Get message identifier
 	 * 
 	 * @return string
 	 */
@@ -124,7 +124,7 @@ abstract class Sepa
 	}
 	
 	/**
-	 * set initiator
+	 * Set initiator
 	 * 
 	 * @param string $initiator
 	 * @throws SepaException
@@ -142,7 +142,7 @@ abstract class Sepa
 	}
 	
 	/**
-	 * get initiator
+	 * Get initiator
 	 * 
 	 * @return string
 	 */
@@ -152,7 +152,7 @@ abstract class Sepa
 	}
 	
 	/**
-	 * add payment collection
+	 * Add payment collection
 	 * 
 	 * @param Payment $payment
 	 * @return Sepa
@@ -165,7 +165,7 @@ abstract class Sepa
 	}
 	
 	/**
-	 * get payment collections
+	 * Get payment collections
 	 * 
 	 * return array
 	 */
@@ -175,7 +175,7 @@ abstract class Sepa
 	}
 	
 	/**
-	 * counts the transactions in all collections
+	 * Counts the transactions in all collections
 	 * 
 	 * @return int
 	 */
@@ -190,7 +190,7 @@ abstract class Sepa
 	}
 	
 	/**
-	 * get control sum
+	 * Get control sum
 	 * 
 	 * @return int
 	 */
@@ -205,7 +205,7 @@ abstract class Sepa
 	}
 	
 	/**
-	 * get default scope
+	 * Get default scope
 	 * 
 	 * @return string
 	 */
@@ -215,7 +215,7 @@ abstract class Sepa
 	}
 	
 	/**
-	 * get default sequence
+	 * Get default sequence
 	 * 
 	 * @return string
 	 */
@@ -225,7 +225,7 @@ abstract class Sepa
 	}
 	
 	/**
-	 * check necessary data
+	 * Check necessary data
 	 * 
 	 * @throws SepaException
 	 * @return bool
