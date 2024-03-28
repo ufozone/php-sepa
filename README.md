@@ -1,6 +1,6 @@
 # php-sepa
 
-PHP class to creating SEPA files (XML) for credit transfers and direct debits in accordance with version 3.7 of the specification for remote data transmission between customer and German bank according to the DFÜ agreement.
+PHP class to creating SEPA files (XML) for credit transfers and direct debits in accordance with version 3.7 of the specification for remote data transmission between customer and bank according to the DFÜ agreement for the German banking industry.
 
 The versions of the standard followed are:
 
