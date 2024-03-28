@@ -22,6 +22,7 @@ $sepa->setInitiator('Max Mustermann'); // Einreicher
 
 $payment = new \MG\Sepa\Payment($validatorFactory);
 $payment->setPriority('HIGH'); // Prioritaet NORM oder HIGH
+//$payment->setScope('INST'); // Echtzeitueberweisung
 $payment->setAccount('Max Mustermann', 'DE02370501980001802057', 'COLSDE33'); // Auftraggaber
 //$payment->setAccountCurrency($currency); // Kontowaehrung
 //$payment->disableBatchBooking(); // deaktiviere Sammelbuchung
