@@ -1,5 +1,5 @@
 <?php
-// $Id: Payment.php 7657 2019-04-12 21:26:58Z markus $
+// $Id: Payment.php 8740 2024-03-28 16:03:37Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa;
@@ -22,16 +22,16 @@ class Payment
 	private $id = '';
 	
 	/**
-	 * Scope (CORE, B2B)
+	 * Scope (CORE, B2B, INST)
 	 * @var string
 	 */
-	private $scope = 'CORE';
+	private $scope = '';
 	
 	/**
 	 * Sequence (OOFF, FRST, RCUR, FNAL)
 	 * @var string
 	 */
-	private $sequence = 'OOFF';
+	private $sequence = '';
 	
 	/**
 	 * Creditor Identifier
@@ -80,6 +80,12 @@ class Payment
 	 * @var string
 	 */
 	private $accountCurrency = '';
+	
+	/**
+	 * Ultimate Creditor or Debtor Name
+	 * @var string
+	 */
+	private $ultimateName = '';
 	
 	/**
 	 * Payment Transactions
@@ -474,6 +480,29 @@ class Payment
 	public function getAccountCurrency() : string
 	{
 		return $this->accountCurrency;
+	}
+	
+	/**
+	 * set ultimate applicant
+	 * 
+	 * @param string $ultimateName
+	 * @return Payment
+	 */
+	public function setUltimateName(string $ultimateName) : Payment
+	{
+		$this->ultimateName = trim($ultimateName);
+		
+		return $this;
+	}
+	
+	/**
+	 * get ultimate applicant
+	 * 
+	 * @return string
+	 */
+	public function getUltimateName() : string
+	{
+		return $this->ultimateName;
 	}
 	
 	/**

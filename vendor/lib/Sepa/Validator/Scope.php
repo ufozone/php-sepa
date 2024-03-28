@@ -1,5 +1,5 @@
 <?php
-// $Id: Scope.php 7657 2019-04-12 21:26:58Z markus $
+// $Id: Scope.php 8740 2024-03-28 16:03:37Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa\Validator;
@@ -14,6 +14,6 @@ class Scope implements \MG\Sepa\Validator
 {
 	public function isValid($subject) : bool
 	{
-		return (bool) preg_match("/^(CORE|B2B)$/", $subject);
+		return (bool) preg_match("/^(CORE|B2B|INST)$/", $subject);
 	}
 }

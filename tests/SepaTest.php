@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../src/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 /**
  * Integrationstests
@@ -37,7 +37,7 @@ class SepaTest extends PHPUnit\Framework\TestCase
 		$dom = new \DOMDocument();
 		$dom->loadXML($xml->get());
 		
-		$this->assertTrue($dom->schemaValidate(__DIR__ . '/../src/schema/pain.001.001.03.xsd'));
+		$this->assertTrue($dom->schemaValidate(__DIR__ . '/../vendor/schema/pain.001.001.09.xsd'));
 	}
 	
 	public function testValidateXmlFileXmlReader()
@@ -45,12 +45,12 @@ class SepaTest extends PHPUnit\Framework\TestCase
 		$sepa = $this->getSepaObject();
 		$xml = $this->getSepaXmlObject($sepa);
 		
-		$xml = new \XMLReader();
-		$xml->xml($xml->get());
-		$xml->setSchema(__DIR__ . '/../src/schema/pain.001.001.03.xsd');
-		while ($xml->read());
+		$xmlReader = new \XMLReader();
+		$xmlReader->xml($xml->get());
+		$xmlReader->setSchema(__DIR__ . '/../vendor/schema/pain.001.001.09.xsd');
+		while ($xmlReader->read());
 		
-		$this->assertTrue($xml->isValid());
+		$this->assertTrue($xmlReader->isValid());
 	}
 	
 	private function getSepaObject($validatorFactoryMock = false)

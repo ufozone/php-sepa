@@ -1,5 +1,5 @@
 <?php
-require "lib/src/autoload.php";
+require __DIR__ . '/../vendor/autoload.php';
 
 try
 {

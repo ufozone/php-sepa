@@ -1,5 +1,5 @@
 <?php
-// $Id: CreditTransfer.php 7657 2019-04-12 21:26:58Z markus $
+// $Id: CreditTransfer.php 8739 2024-03-28 12:41:21Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa;
@@ -22,6 +22,6 @@ class CreditTransfer extends Sepa
 	{
 		$this->validatorFactory = $validatorFactory;
 		$this->type = self::CREDIT_TRANSFER;
-		$this->pain = 'pain.001.001.03';
+		$this->pain = 'pain.001.001.09';
 	}
 }

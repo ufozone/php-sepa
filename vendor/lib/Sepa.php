@@ -1,5 +1,5 @@
 <?php
-// $Id: Sepa.php 7657 2019-04-12 21:26:58Z markus $
+// $Id: Sepa.php 8740 2024-03-28 16:03:37Z markus $
 declare(strict_types=1);
 
 namespace MG;
@@ -30,6 +30,16 @@ abstract class Sepa
 	 * @var string
 	 */
 	protected $pain = '';
+	
+	/**
+	 * @var string
+	 */
+	protected $defaultScope = '';
+	
+	/**
+	 * @var string
+	 */
+	protected $defaultSequence = '';
 	
 	/**
 	 * @var ValidatorFactory
@@ -192,6 +202,26 @@ abstract class Sepa
 			$controlSum += $payment->getControlSum();
 		}
 		return $controlSum;
+	}
+	
+	/**
+	 * get default scope
+	 * 
+	 * @return string
+	 */
+	public function getDefaultScope() : string
+	{
+		return $this->defaultScope;
+	}
+	
+	/**
+	 * get default sequence
+	 * 
+	 * @return string
+	 */
+	public function getDefaultSequence() : string
+	{
+		return $this->defaultSequence;
 	}
 	
 	/**

@@ -1,5 +1,5 @@
 <?php
-// $Id: DirectDebit.php 7657 2019-04-12 21:26:58Z markus $
+// $Id: DirectDebit.php 8740 2024-03-28 16:03:37Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa;
@@ -22,6 +22,8 @@ class DirectDebit extends Sepa
 	{
 		$this->validatorFactory = $validatorFactory;
 		$this->type = self::DIRECT_DEBIT;
-		$this->pain = 'pain.008.001.02';
+		$this->pain = 'pain.008.001.08';
+		$this->defaultScope = 'CORE';
+		$this->defaultSequence = 'OOFF';
 	}
 }

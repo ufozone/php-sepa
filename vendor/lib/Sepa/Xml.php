@@ -1,5 +1,5 @@
 <?php
-// $Id: Xml.php 8738 2024-02-20 23:38:55Z markus $
+// $Id: Xml.php 8742 2024-03-28 16:17:50Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa;
@@ -206,13 +206,9 @@ class Xml
 	 */
 	public function validate() : bool
 	{
-		$xsdFile = __DIR__ . '/../../schema/' . $this->sepa->getPain() . '.xsd';
-		if (!is_file($xsdFile))
-		{
-			throw new XmlException('Schema file ' . $this->sepa->getPain() . '.xsd not found', XmlException::SCHEMA_FILE_NOT_FOUND);
-		}
 		libxml_use_internal_errors(true);
 		
+		$xsdFile = $this->getPainFile();
 		if ($this->tmpFile === null)
 		{
 			$this->create();
@@ -223,6 +219,16 @@ class Xml
 		while ($xml->read());
 		
 		return $xml->isValid();
+	}
+	
+	public function getPainFile() : string
+	{
+		$xsdFile = __DIR__ . '/../../schema/' . $this->sepa->getPain() . '.xsd';
+		if (!is_file($xsdFile))
+		{
+			throw new XmlException('Schema file ' . $this->sepa->getPain() . '.xsd not found', XmlException::SCHEMA_FILE_NOT_FOUND);
+		}
+		return $xsdFile;
 	}
 	
 	/**
@@ -295,15 +301,17 @@ class Xml
 		$xml->startElement($xmlType);
 		
 		// Build Header
+		// GrpHdr
 		$xml->startElement('GrpHdr');
 		$xml->writeElement('MsgId', $messageId);
 		$xml->writeElement('CreDtTm', $creationDateTime);
 		$xml->writeElement('NbOfTxs', (string)$numberOfTransactions);
 		$xml->writeElement('CtrlSum', $this->formatAmount($controlSum));
+		// InitgPty
 		$xml->startElement('InitgPty');
 		$xml->writeElement('Nm', $this->formatString($this->sepa->getInitiator(), 70));
 		$xml->endElement(); // InitgPty
-		$xml->endElement(); // Header
+		$xml->endElement(); // GrpHdr
 		
 		// Payment Collections
 		$count = 0;
@@ -331,42 +339,61 @@ class Xml
 	{
 		$isCreditTransfer = ($this->sepa->getType() === Sepa::CREDIT_TRANSFER);
 		$isDirectDebit = ($this->sepa->getType() === Sepa::DIRECT_DEBIT);
-		$pmtInfId = $payment->getId() ?: $this->sepa->getId() . '-' . $count;
+		$pmtInfId = $payment->getId() ?: ($this->sepa->getId() . '-' . $count);
 		$numberOfTransactions = $payment->getNumberOfTransactions();
 		$controlSum = $payment->getControlSum();
-		$clnt = ($isCreditTransfer) ? 'Dbtr' : 'Cdtr';
+		$pmtClnt = ($isCreditTransfer) ? 'Dbtr' : 'Cdtr';
+		$pmtScope = $payment->getScope() ?: $this->sepa->getDefaultScope();
+		$pmtSequence = $payment->getSequence() ?: $this->sepa->getDefaultSequence();
 		
+		// PmtInf
 		$xml->startElement('PmtInf');
 		$xml->writeElement('PmtInfId', $pmtInfId);
 		$xml->writeElement('PmtMtd', ($isCreditTransfer) ? 'TRF' : 'DD');
 		$xml->writeElement('BtchBookg', $payment->isBatchBooking() ? 'true' : 'false');
 		$xml->writeElement('NbOfTxs', (string)$numberOfTransactions);
 		$xml->writeElement('CtrlSum', $this->formatAmount($controlSum));
+		// PmtTpInf
 		$xml->startElement('PmtTpInf');
-		if ($priority = $payment->getPriority())
+		if ($isCreditTransfer && $priority = $payment->getPriority())
 		{
 			$xml->writeElement('InstrPrty', $priority);
 		}
+		// SvcLvl
 		$xml->startElement('SvcLvl');
 		$xml->writeElement('Cd', 'SEPA');
 		$xml->endElement(); // SvcLvl
+		if ($pmtScope)
+		{
+			// LclInstrm
+			$xml->startElement('LclInstrm');
+			$xml->writeElement('Cd', $pmtScope);
+			$xml->endElement(); // LclInstrm
+		}
 		if ($isDirectDebit)
 		{
-			$xml->startElement('LclInstrm');
-			$xml->writeElement('Cd', $payment->getScope());
-			$xml->endElement(); // LclInstrm
-			$xml->writeElement('SeqTp', $payment->getSequence());
+			$xml->writeElement('SeqTp', $pmtSequence);
 		}
 		$xml->endElement(); // PmtTpInf
-		$xml->writeElement(($isCreditTransfer) ? 'ReqdExctnDt' : 'ReqdColltnDt', $payment->getDate());
 		
-		// Client
-		$xml->startElement($clnt);
+		if ($isDirectDebit)
+		{
+			$xml->writeElement('ReqdColltnDt', $payment->getDate());
+		}
+		else
+		{
+			// ReqdExctnDt
+			$xml->startElement('ReqdExctnDt');
+			$xml->writeElement('Dt', $payment->getDate());
+			$xml->endElement(); // ReqdExctnDt
+		}
+		// Dbtr/Cdtr
+		$xml->startElement($pmtClnt);
 		$xml->writeElement('Nm', $this->formatString($payment->getAccountName(), 70));
-		$xml->endElement(); // Client
+		$xml->endElement(); // Dbtr/Cdtr
 		
-		// Client Account
-		$xml->startElement($clnt . 'Acct');
+		// DbtrAcct/CdtrAcct
+		$xml->startElement($pmtClnt . 'Acct');
 		$xml->startElement('Id');
 		$xml->writeElement('IBAN', $payment->getAccounIban());
 		$xml->endElement(); // Id
@@ -374,14 +401,14 @@ class Xml
 		{
 			$xml->writeElement('Ccy', $accountCurrency);
 		}
-		$xml->endElement(); // Client Account
+		$xml->endElement(); // DbtrAcct/CdtrAcct
 		
-		// Client Agent
-		$xml->startElement($clnt . 'Agt');
+		// DbtrAgt/CdtrAgt
+		$xml->startElement($pmtClnt . 'Agt');
 		$xml->startElement('FinInstnId');
 		if ($accountBic = $payment->getAccountBic())
 		{
-			$xml->writeElement('BIC', $accountBic);
+			$xml->writeElement('BICFI', $accountBic);
 		}
 		else
 		{
@@ -390,7 +417,15 @@ class Xml
 			$xml->endElement(); // Othr
 		}
 		$xml->endElement(); // FinInstnId
-		$xml->endElement(); // Client Agent
+		$xml->endElement(); // DbtrAgt/CdtrAgt
+		
+		// Ultimate Debtor or Creditor
+		if ($ultimateName = $payment->getUltimateName())
+		{
+			$xml->startElement('Ultmt' . $pmtClnt);
+			$xml->writeElement('Nm', $this->formatString($ultimateName, 70));
+			$xml->endElement(); // UltmtDbtr/UltmtCdtr
+		}
 		
 		// Charge Bearer
 		$xml->writeElement('ChrgBr', 'SLEV');
@@ -436,7 +471,9 @@ class Xml
 		$isDirectDebit = ($this->sepa->getType() === Sepa::DIRECT_DEBIT);
 		$txClnt = ($isCreditTransfer) ? 'Cdtr' : 'Dbtr';
 		
+		// CdtTrfTxInf/DrctDbtTxInf
 		$xml->startElement(($isCreditTransfer) ? 'CdtTrfTxInf' : 'DrctDbtTxInf');
+		// PmtId
 		$xml->startElement('PmtId');
 		if ($instrId = $transaction->getId())
 		{
@@ -455,19 +492,21 @@ class Xml
 		}
 		else
 		{
+			//InstdAmt
 			$xml->startElement('InstdAmt');
 			$xml->writeAttribute('Ccy', $transaction->getCurrency());
 			$xml->text($this->formatAmount($transaction->getAmount()));
 			$xml->endElement(); // InstdAmt
 			
-			// Mandate
+			// DrctDbtTx
 			$xml->startElement('DrctDbtTx');
+			// MndtRltdInf
 			$xml->startElement('MndtRltdInf');
 			$xml->writeElement('MndtId', $transaction->getMandateId());
 			$xml->writeElement('DtOfSgntr', $transaction->getMandateDate());
-			$xml->writeElement('AmdmntInd', $transaction->hasMandateChanged() ? 'true' : 'false');
 			if ($transaction->hasMandateChanged()) // Aenderung an Mandat
 			{
+				$xml->writeElement('AmdmntInd', 'true');
 				$xml->startElement('AmdmntInfDtls');
 				if ($originalMandateId = $transaction->getOriginalMandateId())
 				{
@@ -487,36 +526,40 @@ class Xml
 		}
 		if ($bic = $transaction->getBic())
 		{
+			// CdtrAgt/DbtrAgt
 			$xml->startElement($txClnt . 'Agt');
 			$xml->startElement('FinInstnId');
-			$xml->writeElement('BIC', $bic);
+			$xml->writeElement('BICFI', $bic);
 			$xml->endElement(); // FinInstnId
-			$xml->endElement(); // Agent
+			$xml->endElement(); // CdtrAgt/DbtrAgt
 		}
 		elseif ($isDirectDebit)
 		{
+			// CdtrAgt/DbtrAgt
 			$xml->startElement($txClnt . 'Agt');
 			$xml->startElement('FinInstnId');
 			$xml->startElement('Othr');
 			$xml->writeElement('Id', 'NOTPROVIDED');
 			$xml->endElement(); // Othr
 			$xml->endElement(); // FinInstnId
-			$xml->endElement(); // Transaction Client Agent
+			$xml->endElement(); // CdtrAgt/DbtrAgt
 		}
+		// Cdtr/Dbtr
 		$xml->startElement($txClnt);
 		$xml->writeElement('Nm', $this->formatString($transaction->getName(), 70));
-		$xml->endElement(); // Transaction Client
+		$xml->endElement(); // Cdtr/Dbtr
 		
+		// CdtrAcct/DbtrAcct
 		$xml->startElement($txClnt . 'Acct');
 		$xml->startElement('Id');
 		$xml->writeElement('IBAN', $transaction->getIban());
 		$xml->endElement(); // Id
-		$xml->endElement(); // Transaction Client Account
+		$xml->endElement(); // CdtrAcct/DbtrAcct
 		if ($ultimateName = $transaction->getUltimateName()) // Ultimate Debtor or Creditor
 		{
 			$xml->startElement('Ultmt' . $txClnt);
 			$xml->writeElement('Nm', $this->formatString($ultimateName, 70));
-			$xml->endElement(); // Ultimate Name
+			$xml->endElement(); // UltmtCdtr/UltmtDbtr
 		}
 		if ($purpose = $transaction->getPurpose()) // Purpose Code
 		{
