@@ -1,5 +1,4 @@
 <?php
-// $Id: Factory.php 8834 2024-08-25 14:52:29Z markus $
 declare(strict_types=1);
 
 namespace ufozone\phpsepa\Sepa\Validator;

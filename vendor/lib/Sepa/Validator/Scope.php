@@ -1,5 +1,4 @@
 <?php
-// $Id: Scope.php 8740 2024-03-28 16:03:37Z markus $
 declare(strict_types=1);
 
 namespace ufozone\phpsepa\Sepa\Validator;

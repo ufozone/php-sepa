@@ -1,5 +1,4 @@
 <?php
-// $Id: Exception.php 8836 2024-08-25 14:58:41Z markus $
 declare(strict_types=1);
 
 namespace ufozone\phpsepa\Sepa\Validator;

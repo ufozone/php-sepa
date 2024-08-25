@@ -1,5 +1,4 @@
 <?php
-// $Id: Xml.php 8833 2024-08-25 14:48:13Z markus $
 declare(strict_types=1);
 
 namespace ufozone\phpsepa\Sepa;

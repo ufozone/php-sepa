@@ -1,5 +1,4 @@
 <?php
-// $Id: Exception.php 8747 2024-03-28 17:20:05Z markus $
 declare(strict_types=1);
 
 namespace ufozone\phpsepa\Sepa;
