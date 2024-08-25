@@ -1,5 +1,5 @@
 <?php
-// $Id: Exception.php 7657 2019-04-12 21:26:58Z markus $
+// $Id: Exception.php 8835 2024-08-25 14:54:15Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa\Xml;
@@ -11,9 +11,9 @@ namespace MG\Sepa\Xml;
  * @since      2017-06-13
  * @uses \Exception
  */
-class Exception extends \MG\Exception
+class Exception extends \Exception
 {
-	const CANNOT_OPEN_TMP_FILE = 4100;
-	const CANNOT_CREATE_XML = 4200;
-	const SCHEMA_FILE_NOT_FOUND = 4300;
+	const CANNOT_OPEN_TMP_FILE = 5100;
+	const CANNOT_CREATE_XML = 5200;
+	const SCHEMA_FILE_NOT_FOUND = 5300;
 }

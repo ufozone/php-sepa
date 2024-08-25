@@ -1,10 +1,9 @@
 <?php
-// $Id: Xml.php 8745 2024-03-28 17:08:31Z markus $
+// $Id: Xml.php 8833 2024-08-25 14:48:13Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa;
 
-use \MG\Exception;
 use \MG\Sepa;
 use \MG\Sepa\Xml\Exception as XmlException;
 

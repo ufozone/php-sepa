@@ -1,5 +1,5 @@
 <?php
-// $Id: Exception.php 7657 2019-04-12 21:26:58Z markus $
+// $Id: Exception.php 8833 2024-08-25 14:48:13Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa\Payment;
@@ -11,7 +11,7 @@ namespace MG\Sepa\Payment;
  * @since      2017-06-13
  * @uses \Exception
  */
-class Exception extends \MG\Exception
+class Exception extends \Exception
 {
 	const PAYMENT_INFORMATION_ID_EMPTY = 2101;
 	const PAYMENT_INFORMATION_ID_INVALID = 2102;

@@ -1,5 +1,5 @@
 <?php
-// $Id: Factory.php 7657 2019-04-12 21:26:58Z markus $
+// $Id: Factory.php 8834 2024-08-25 14:52:29Z markus $
 declare(strict_types=1);
 
 namespace MG\Sepa\Validator;
@@ -23,7 +23,7 @@ class Factory
 		$validatorName = '\\MG\\Sepa\\Validator\\' . $type;
 		if (!class_exists($validatorName))
 		{
-			throw new \MG\Exception('Unknown type: ' . $type);
+			throw new Exception('Unknown type: ' . $type, Exception::NO_VALID_VALIDATOR);
 		}
 		if (!isSet($validators[$type]))
 		{
