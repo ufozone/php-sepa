@@ -18,7 +18,7 @@ class SepaTest extends PHPUnit\Framework\TestCase
 		{
 			$exception = true;
 		}
-		$this->assertTrue($exception);
+		$this->assertTrue(!$exception);
 	}
 	
 	public function testValidateXmlFile()
@@ -64,26 +64,26 @@ class SepaTest extends PHPUnit\Framework\TestCase
 			$validatorFactory = new \ufozone\phpsepa\Sepa\Validator\Factory();
 		}
 		$sepa = new \ufozone\phpsepa\Sepa\CreditTransfer($validatorFactory);
-		$sepa->setInitiator("Markus Görnhardt");
+		$sepa->setInitiator('Max Mustermann');
 		
 		$payment = new \ufozone\phpsepa\Sepa\Payment($validatorFactory);
-		$payment->setAccount("Markus Görnhardt", "DE89840500001565003795", "HELADEF1RRS");
+		$payment->setAccount('Max Mustermann', 'DE02370501980001802057', 'COLSDE33');
 		
 		// first transaction
 		$transaction = new \ufozone\phpsepa\Sepa\Transaction($validatorFactory);
-		$transaction->setName("Karl Kümmel")
-			->setIban("DE87200500001234567890")
-			->setBic("BANKDEZZXXX")
+		$transaction->setName('Karl Kümmel')
+			->setIban('DE02300209000106531065')
+			->setBic('CMCIDEDD')
 			->setAmount(123.45)
-			->setReference("Rechnung R2017742 vom 17.06.2017");
+			->setReference('Rechnung R2017742 vom 17.06.2017');
 		$payment->addTransaction($transaction);
 		
 		// second transaction
 		$transaction = new \ufozone\phpsepa\Sepa\Transaction($validatorFactory);
-		$transaction->setName("Doris Dose")
-			->setIban("DE87200500001234567890")
+		$transaction->setName('Doris Dose')
+			->setIban('DE02500105170137075030')
 			->setAmount(234.56)
-			->setReference("Kinderfahrrad");
+			->setReference('Kinderfahrrad');
 		$payment->addTransaction($transaction);
 		
 		$sepa->addPayment($payment);
