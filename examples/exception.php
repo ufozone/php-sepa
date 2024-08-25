@@ -16,7 +16,7 @@ catch (\MG\Sepa\Transaction\Exception $e)
 {
 	// Transaction-Fehler
 }
-catch (\MG\Exception $e)
+catch (\MG\Sepa\Exception $e)
 {
 	// Sonstiger Fehler
 }

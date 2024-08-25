@@ -45,7 +45,7 @@ try
 	$xml = new \MG\Sepa\Xml($sepa);
 	echo $xml->get();
 }
-catch (\MG\Exception $e)
+catch (Exception $e)
 {
 	print_r($e);
 	exit;
