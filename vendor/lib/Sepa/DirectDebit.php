@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace ufozone\phpsepa\Sepa;
 
-use ufozone\phpsepa\Sepa;
+use \ufozone\phpsepa\Sepa;
 use \ufozone\phpsepa\Sepa\Validator\Factory as ValidatorFactory;
 
 /**
