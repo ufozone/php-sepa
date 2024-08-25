@@ -2,7 +2,7 @@
 // $Id: CreditorId.php 8745 2024-03-28 17:08:31Z markus $
 declare(strict_types=1);
 
-namespace MG\Sepa\Validator;
+namespace ufozone\phpsepa\Sepa\Validator;
 
 /**
  * Validates Creditor Identifier
@@ -10,7 +10,7 @@ namespace MG\Sepa\Validator;
  * @author Markus
  * @since      2017-06-15
  */
-class CreditorId implements \MG\Sepa\Validator
+class CreditorId implements \ufozone\phpsepa\Sepa\Validator
 {
 	use Checksum;
 	

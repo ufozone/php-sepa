@@ -2,7 +2,7 @@
 // $Id: Amount.php 7657 2019-04-12 21:26:58Z markus $
 declare(strict_types=1);
 
-namespace MG\Sepa\Validator;
+namespace ufozone\phpsepa\Sepa\Validator;
 
 /**
  * Class to validate amount
@@ -10,7 +10,7 @@ namespace MG\Sepa\Validator;
  * @author Markus
  * @since      2017-06-15
  */
-class Amount implements \MG\Sepa\Validator
+class Amount implements \ufozone\phpsepa\Sepa\Validator
 {
 	public function isValid($subject) : bool
 	{

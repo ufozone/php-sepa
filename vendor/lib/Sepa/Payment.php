@@ -2,10 +2,10 @@
 // $Id: Payment.php 8745 2024-03-28 17:08:31Z markus $
 declare(strict_types=1);
 
-namespace MG\Sepa;
+namespace ufozone\phpsepa\Sepa;
 
-use \MG\Sepa\Payment\Exception as PaymentException;
-use \MG\Sepa\Validator\Factory as ValidatorFactory;
+use \ufozone\phpsepa\Sepa\Payment\Exception as PaymentException;
+use \ufozone\phpsepa\Sepa\Validator\Factory as ValidatorFactory;
 
 /**
  * Payment Class

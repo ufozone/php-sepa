@@ -4,13 +4,13 @@ require __DIR__ . '/../vendor/autoload.php';
 
 try
 {
-	$validatorFactory = new \MG\Sepa\Validator\Factory();
+	$validatorFactory = new \ufozone\phpsepa\Sepa\Validator\Factory();
 	
-	$sepa = new \MG\Sepa\DirectDebit($validatorFactory);
+	$sepa = new \ufozone\phpsepa\Sepa\DirectDebit($validatorFactory);
 	$sepa->setInitiator('Max Mustermann'); // Einreicher
 	//$sepa->setId($msgId); // Nachrichtenreferenz
 	
-	$payment = new \MG\Sepa\Payment($validatorFactory);
+	$payment = new \ufozone\phpsepa\Sepa\Payment($validatorFactory);
 	//$payment->setScope('CORE'); // Lastschriftart (CORE oder B2B)
 	$payment->setAccount('Max Mustermann', 'DE02370501980001802057', 'COLSDE33'); // Auftraggaber
 	//$payment->setAccountCurrency($currency); // Kontowaehrung
@@ -18,7 +18,7 @@ try
 	//$payment->disableBatchBooking(); // deaktiviere Sammelbuchung
 	//$payment->setDate($date); // Gewuenschter Ausfuehrungstermin
 	
-	$transaction = new \MG\Sepa\Transaction($validatorFactory);
+	$transaction = new \ufozone\phpsepa\Sepa\Transaction($validatorFactory);
 	$transaction->setEndToEndId('R2017742-1')	// Transaktions-ID (End-to-End)
 		->setName('Karl Kümmel')				// Name des Zahlungspflichtigen
 		->setIban('DE02300209000106531065')		// IBAN des Zahlungspflichtigen
@@ -36,7 +36,7 @@ try
 	header("Content-Disposition: attachment; filename=\"sepa.xml\"");
 	header("Pragma: no-cache");
 	
-	$xml = new \MG\Sepa\Xml($sepa);
+	$xml = new \ufozone\phpsepa\Sepa\Xml($sepa);
 	echo $xml->get();
 }
 catch (Exception $e)

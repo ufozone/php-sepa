@@ -10,7 +10,7 @@
 spl_autoload_register(function ($class)
 {
 	// project-specific namespace prefix
-	$prefix = 'MG\\';
+	$prefix = 'ufozone\\phpsepa\\';
 	
 	// does the class use the namespace prefix?
 	$len = strlen($prefix);

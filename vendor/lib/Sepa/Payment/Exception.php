@@ -2,7 +2,7 @@
 // $Id: Exception.php 8836 2024-08-25 14:58:41Z markus $
 declare(strict_types=1);
 
-namespace MG\Sepa\Payment;
+namespace ufozone\phpsepa\Sepa\Payment;
 
 /**
  * Extension of base exception to define payment related errors
@@ -11,7 +11,7 @@ namespace MG\Sepa\Payment;
  * @since      2017-06-13
  * @uses \Exception
  */
-class Exception extends \MG\Sepa\Exception
+class Exception extends \ufozone\phpsepa\Sepa\Exception
 {
 	const PAYMENT_INFORMATION_ID_EMPTY = 2101;
 	const PAYMENT_INFORMATION_ID_INVALID = 2102;

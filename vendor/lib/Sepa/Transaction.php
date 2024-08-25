@@ -2,10 +2,10 @@
 // $Id: Transaction.php 8745 2024-03-28 17:08:31Z markus $
 declare(strict_types=1);
 
-namespace MG\Sepa;
+namespace ufozone\phpsepa\Sepa;
 
-use \MG\Sepa\Transaction\Exception as TransactionException;
-use \MG\Sepa\Validator\Factory as ValidatorFactory;
+use \ufozone\phpsepa\Sepa\Transaction\Exception as TransactionException;
+use \ufozone\phpsepa\Sepa\Validator\Factory as ValidatorFactory;
 
 /**
  * Transaction Class

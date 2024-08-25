@@ -2,9 +2,9 @@
 // $Id: Factory.php 8834 2024-08-25 14:52:29Z markus $
 declare(strict_types=1);
 
-namespace MG\Sepa\Validator;
+namespace ufozone\phpsepa\Sepa\Validator;
 
-use \MG\Sepa\Validator;
+use \ufozone\phpsepa\Sepa\Validator;
 
 /**
  * Validator Factory
@@ -20,7 +20,7 @@ class Factory
 		 * @var Validator[]
 		 */
 		static $validators = [];
-		$validatorName = '\\MG\\Sepa\\Validator\\' . $type;
+		$validatorName = '\\ufozone\\phpsepa\\Sepa\\Validator\\' . $type;
 		if (!class_exists($validatorName))
 		{
 			throw new Exception('Unknown type: ' . $type, Exception::NO_VALID_VALIDATOR);

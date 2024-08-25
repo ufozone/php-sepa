@@ -2,7 +2,7 @@
 // $Id: Purpose.php 7657 2019-04-12 21:26:58Z markus $
 declare(strict_types=1);
 
-namespace MG\Sepa\Validator;
+namespace ufozone\phpsepa\Sepa\Validator;
 
 /**
  * Class to validate purpose (ISO 20022)
@@ -16,7 +16,7 @@ namespace MG\Sepa\Validator;
  * @since      2017-06-15
  * @see https://www.vrb-spangenberg.de/content/dam/f0369-0/neue_homepage/SEPA/Purpose_CODES.pdf
  */
-class Purpose implements \MG\Sepa\Validator
+class Purpose implements \ufozone\phpsepa\Sepa\Validator
 {
 	public function isValid($subject) : bool
 	{

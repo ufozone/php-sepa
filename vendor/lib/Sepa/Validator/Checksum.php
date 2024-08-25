@@ -2,7 +2,7 @@
 // $Id: Checksum.php 8745 2024-03-28 17:08:31Z markus $
 declare(strict_types=1);
 
-namespace MG\Sepa\Validator;
+namespace ufozone\phpsepa\Sepa\Validator;
 
 /**
  * trait to calculate checksums

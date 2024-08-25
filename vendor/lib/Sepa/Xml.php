@@ -2,10 +2,10 @@
 // $Id: Xml.php 8833 2024-08-25 14:48:13Z markus $
 declare(strict_types=1);
 
-namespace MG\Sepa;
+namespace ufozone\phpsepa\Sepa;
 
-use \MG\Sepa;
-use \MG\Sepa\Xml\Exception as XmlException;
+use \ufozone\phpsepa\Sepa;
+use \ufozone\phpsepa\Sepa\Xml\Exception as XmlException;
 
 /**
  * XML Class

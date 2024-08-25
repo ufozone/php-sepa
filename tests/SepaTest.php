@@ -61,16 +61,16 @@ class SepaTest extends PHPUnit\Framework\TestCase
 		}
 		else
 		{
-			$validatorFactory = new \MG\Sepa\Validator\Factory();
+			$validatorFactory = new \ufozone\phpsepa\Sepa\Validator\Factory();
 		}
-		$sepa = new \MG\Sepa\CreditTransfer($validatorFactory);
+		$sepa = new \ufozone\phpsepa\Sepa\CreditTransfer($validatorFactory);
 		$sepa->setInitiator("Markus Görnhardt");
 		
-		$payment = new \MG\Sepa\Payment($validatorFactory);
+		$payment = new \ufozone\phpsepa\Sepa\Payment($validatorFactory);
 		$payment->setAccount("Markus Görnhardt", "DE89840500001565003795", "HELADEF1RRS");
 		
 		// first transaction
-		$transaction = new \MG\Sepa\Transaction($validatorFactory);
+		$transaction = new \ufozone\phpsepa\Sepa\Transaction($validatorFactory);
 		$transaction->setName("Karl Kümmel")
 			->setIban("DE87200500001234567890")
 			->setBic("BANKDEZZXXX")
@@ -79,7 +79,7 @@ class SepaTest extends PHPUnit\Framework\TestCase
 		$payment->addTransaction($transaction);
 		
 		// second transaction
-		$transaction = new \MG\Sepa\Transaction($validatorFactory);
+		$transaction = new \ufozone\phpsepa\Sepa\Transaction($validatorFactory);
 		$transaction->setName("Doris Dose")
 			->setIban("DE87200500001234567890")
 			->setAmount(234.56)
@@ -93,7 +93,7 @@ class SepaTest extends PHPUnit\Framework\TestCase
 	
 	private function getSepaXmlObject($sepa)
 	{
-		$xml = new \MG\Sepa\Xml($sepa);
+		$xml = new \ufozone\phpsepa\Sepa\Xml($sepa);
 		
 		return $xml;
 	}
@@ -102,9 +102,9 @@ class SepaTest extends PHPUnit\Framework\TestCase
 	{
 		return new class
 		{
-		    public function getValidator(string $type) : \MG\Sepa\Validator
+			public function getValidator(string $type) : \ufozone\phpsepa\Sepa\Validator
 			{
-				return new \MG\Sepa\Validator\Mock();
+				return new \ufozone\phpsepa\Sepa\Validator\Mock();
 			}
 		};
 	}
