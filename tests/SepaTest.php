@@ -37,7 +37,7 @@ class SepaTest extends PHPUnit\Framework\TestCase
 		$dom = new \DOMDocument();
 		$dom->loadXML($xml->get());
 		
-		$this->assertTrue($dom->schemaValidate(__DIR__ . '/../vendor/schema/pain.001.001.09.xsd'));
+		$this->assertTrue($dom->schemaValidate(__DIR__ . '/../src/schema/pain.001.001.09.xsd'));
 	}
 	
 	public function testValidateXmlFileXmlReader()
@@ -47,7 +47,7 @@ class SepaTest extends PHPUnit\Framework\TestCase
 		
 		$xmlReader = new \XMLReader();
 		$xmlReader->xml($xml->get());
-		$xmlReader->setSchema(__DIR__ . '/../vendor/schema/pain.001.001.09.xsd');
+		$xmlReader->setSchema(__DIR__ . '/../src/schema/pain.001.001.09.xsd');
 		while ($xmlReader->read());
 		
 		$this->assertTrue($xmlReader->isValid());

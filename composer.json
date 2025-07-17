@@ -1,0 +1,23 @@
+{
+    "name": "ufozone/php-sepa",
+    "description": "PHP class to create German SEPA files (XML) for credit transfer and direct debit.",
+    "version": "2.0.0",
+    "homepage": "https://github.com/ufozone/php-sepa",
+    "license": "BSD-2-Clause",
+    "authors": [
+        {
+            "name": "ufozone",
+            "homepage": "https://ufozone.de"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/ufozone/php-sepa/issues"
+    },
+    "autoload": {
+        "psr-4": {
+            "ufozone\\phpsepa\\": "src/lib/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
