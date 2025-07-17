@@ -20,7 +20,7 @@ abstract class Sepa
 	
 	/**
 	 * Type (Credit Transfer, Direct Debit)
-	 * @var string
+	 * @var int
 	 */
 	protected $type = 0;
 	
