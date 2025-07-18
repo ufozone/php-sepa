@@ -11,6 +11,15 @@ Always verify the generated files at your bank before using them in production!
 
 License: BSD 2-Clause License
 
+## Installing
+
+The recommended way to install php-sepa is through
+[Composer](https://getcomposer.org/).
+
+```bash
+composer require ufozone/php-sepa
+```
+
 ## Example of using SEPA Credit Transfer
 
 ```php
