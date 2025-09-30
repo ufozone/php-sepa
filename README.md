@@ -97,6 +97,12 @@ $xml = new \ufozone\phpsepa\Sepa\Xml($sepa);
 $xml->download('sepa.xml');
 ```
 
+
+## Running tests
+
+```bash
+vendor/bin/phpunit
+```
 ## External Resources
 
 * [German specification for remote data transfer between customer and bank according to the DFÜ agreement "Specification of Data Formats"](https://www.ebics.de/de/datenformate)
