@@ -12,7 +12,9 @@ namespace ufozone\phpsepa\Sepa\PostalAddress;
  */
 class Exception extends \ufozone\phpsepa\Sepa\Exception
 {
-	const COUNTRY_MISSING = 4110;
-	const COUNTRY_EMPTY = 4111;
-	const COUNTRY_INVALID = 4112;
+	const TOWN_NAME_MISSING = 4110;
+	const TOWN_NAME_EMPTY = 4111;
+	const COUNTRY_MISSING = 4210;
+	const COUNTRY_EMPTY = 4211;
+	const COUNTRY_INVALID = 4212;
 }

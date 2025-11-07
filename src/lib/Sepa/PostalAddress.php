@@ -263,7 +263,11 @@ class PostalAddress
 	 */
 	public function setTownName(string $townName) : PostalAddress
 	{
-		$this->townName = trim($townName);
+		if (!$townName = trim($townName))
+		{
+			throw new PostalAddressException('Town name empty', PostalAddressException::TOWN_NAME_EMPTY);
+		}
+		$this->townName = $townName;
 		return $this;
 	}
 
@@ -384,6 +388,10 @@ class PostalAddress
 	 */
 	public function validate() : bool
 	{
+		if ($this->townName === '')
+		{
+			throw new PostalAddressException('Town name missing', PostalAddressException::TOWN_NAME_MISSING);
+		}
 		if ($this->country === '')
 		{
 			throw new PostalAddressException('Country missing', PostalAddressException::COUNTRY_MISSING);
