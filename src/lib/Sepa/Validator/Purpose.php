@@ -7,9 +7,9 @@ namespace ufozone\phpsepa\Sepa\Validator;
  * Class to validate purpose (ISO 20022)
  * 
  * e.g.:
- * SALA	Salary			Gehaltszahlung
- * CBFF	CapitalBuilding	Vermoegenswirksame Leistungen
- * CHAR	Charity			Spende
+ * SALA    Salary             Gehaltszahlung
+ * CBFF    CapitalBuilding    Vermoegenswirksame Leistungen
+ * CHAR    Charity            Spende
  * 
  * @author Markus
  * @since      2017-06-15
@@ -17,8 +17,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
  */
 class Purpose implements \ufozone\phpsepa\Sepa\Validator
 {
-	public function isValid($subject) : bool
-	{
-		return (bool) preg_match("/^[A-Z]{4}$/", $subject);
-	}
+    public function isValid($subject) : bool
+    {
+        return (bool) preg_match("/^[A-Z]{4}$/", $subject);
+    }
 }

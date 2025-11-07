@@ -13,8 +13,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
  */
 class StringV implements \ufozone\phpsepa\Sepa\Validator
 {
-	public function isValid($subject, bool $failEmpty = false) : bool
-	{
-		return (is_string($subject) || (true === $failEmpty && strlen(trim($subject)) === 0));
-	}
+    public function isValid($subject, bool $failEmpty = false) : bool
+    {
+        return (is_string($subject) || (true === $failEmpty && strlen(trim($subject)) === 0));
+    }
 }

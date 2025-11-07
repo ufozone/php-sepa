@@ -13,21 +13,21 @@ use \ufozone\phpsepa\Sepa\Validator;
  */
 class Factory
 {
-	public function getValidator(string $type) : Validator
-	{
-		/**
-		 * @var Validator[]
-		 */
-		static $validators = [];
-		$validatorName = '\\ufozone\\phpsepa\\Sepa\\Validator\\' . $type;
-		if (!class_exists($validatorName))
-		{
-			throw new Exception('Unknown type: ' . $type, Exception::NO_VALID_VALIDATOR);
-		}
-		if (!isSet($validators[$type]))
-		{
-			$validators[$type] = new $validatorName();
-		}
-		return $validators[$type];
-	}
+    public function getValidator(string $type) : Validator
+    {
+        /**
+         * @var Validator[]
+         */
+        static $validators = [];
+        $validatorName = '\\ufozone\\phpsepa\\Sepa\\Validator\\' . $type;
+        if (!class_exists($validatorName))
+        {
+            throw new Exception('Unknown type: ' . $type, Exception::NO_VALID_VALIDATOR);
+        }
+        if (!isSet($validators[$type]))
+        {
+            $validators[$type] = new $validatorName();
+        }
+        return $validators[$type];
+    }
 }

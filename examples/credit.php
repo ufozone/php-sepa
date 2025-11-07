@@ -51,7 +51,7 @@ try
     $xml = new \ufozone\phpsepa\Sepa\Xml($sepa);
     if (!$xml->validate())
     {
-    	print_r($xml->getErrors());
+        print_r($xml->getErrors());
         exit;
     }
     $xml->download();

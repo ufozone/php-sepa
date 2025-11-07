@@ -12,5 +12,5 @@ namespace ufozone\phpsepa\Sepa\Validator;
  */
 class Exception extends \ufozone\phpsepa\Sepa\Exception
 {
-	const NO_VALID_VALIDATOR = 4000;
+    const NO_VALID_VALIDATOR = 4000;
 }

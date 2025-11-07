@@ -11,8 +11,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
  */
 class Mock implements \ufozone\phpsepa\Sepa\Validator
 {
-	public function isValid($subject) : bool
-	{
-		return true;
-	}
+    public function isValid($subject) : bool
+    {
+        return true;
+    }
 }

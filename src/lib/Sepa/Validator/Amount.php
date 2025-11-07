@@ -11,8 +11,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
  */
 class Amount implements \ufozone\phpsepa\Sepa\Validator
 {
-	public function isValid($subject) : bool
-	{
-		return !($subject < 0.01 || $subject > 999999999.99);
-	}
+    public function isValid($subject) : bool
+    {
+        return !($subject < 0.01 || $subject > 999999999.99);
+    }
 }

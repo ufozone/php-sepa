@@ -14,13 +14,13 @@ use \ufozone\phpsepa\Sepa\Validator\Factory as ValidatorFactory;
  */
 class CreditTransfer extends Sepa
 {
-	/**
-	 * Constructor
-	 */
-	public function __construct(ValidatorFactory $validatorFactory)
-	{
-		$this->validatorFactory = $validatorFactory;
-		$this->type = self::CREDIT_TRANSFER;
-		$this->pain = 'pain.001.001.09';
-	}
+    /**
+     * Constructor
+     */
+    public function __construct(ValidatorFactory $validatorFactory)
+    {
+        $this->validatorFactory = $validatorFactory;
+        $this->type = self::CREDIT_TRANSFER;
+        $this->pain = 'pain.001.001.09';
+    }
 }

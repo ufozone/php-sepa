@@ -12,9 +12,9 @@ namespace ufozone\phpsepa\Sepa;
  */
 class Exception extends \Exception
 {
-	const MESSAGE_ID_EMTPY = 1101;
-	const MESSAGE_ID_INVALID = 1102;
-	const INITIATOR_MISSING = 1200;
-	const INITIATOR_EMPTY = 1201;
-	const NO_TRANSACTIONS_PROVIDED = 1300;
+    const MESSAGE_ID_EMTPY = 1101;
+    const MESSAGE_ID_INVALID = 1102;
+    const INITIATOR_MISSING = 1200;
+    const INITIATOR_EMPTY = 1201;
+    const NO_TRANSACTIONS_PROVIDED = 1300;
 }

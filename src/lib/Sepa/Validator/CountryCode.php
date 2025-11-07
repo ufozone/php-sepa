@@ -11,8 +11,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
  */
 class CountryCode implements \ufozone\phpsepa\Sepa\Validator
 {
-	public function isValid($subject) : bool
-	{
-		return (bool) preg_match("/^[A-Z]{2,2}$/", $subject);
-	}
+    public function isValid($subject) : bool
+    {
+        return (bool) preg_match("/^[A-Z]{2,2}$/", $subject);
+    }
 }

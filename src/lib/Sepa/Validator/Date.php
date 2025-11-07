@@ -11,8 +11,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
  */
 class Date implements \ufozone\phpsepa\Sepa\Validator
 {
-	public function isValid($subject) : bool
-	{
-		return (bool) preg_match("/^\d{4}-\d{2}-\d{2}$/", $subject);
-	}
+    public function isValid($subject) : bool
+    {
+        return (bool) preg_match("/^\d{4}-\d{2}-\d{2}$/", $subject);
+    }
 }

@@ -11,5 +11,5 @@ namespace ufozone\phpsepa\Sepa;
  */
 interface Validator
 {
-	public function isValid($subject) : bool;
+    public function isValid($subject) : bool;
 }

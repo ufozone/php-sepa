@@ -11,8 +11,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
  */
 class Scope implements \ufozone\phpsepa\Sepa\Validator
 {
-	public function isValid($subject) : bool
-	{
-		return (bool) preg_match("/^(CORE|B2B|INST)$/", $subject);
-	}
+    public function isValid($subject) : bool
+    {
+        return (bool) preg_match("/^(CORE|B2B|INST)$/", $subject);
+    }
 }

@@ -11,8 +11,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
  */
 class Id2 implements \ufozone\phpsepa\Sepa\Validator
 {
-	public function isValid($subject, int $maxlen = 35, int $minlen = 1) : bool
-	{
-		return (bool) preg_match("/^[A-Za-z0-9\+\?\/\-:\(\)\.,']{{$minlen},{$maxlen}}$/", $subject);
-	}
+    public function isValid($subject, int $maxlen = 35, int $minlen = 1) : bool
+    {
+        return (bool) preg_match("/^[A-Za-z0-9\+\?\/\-:\(\)\.,']{{$minlen},{$maxlen}}$/", $subject);
+    }
 }

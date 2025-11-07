@@ -11,8 +11,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
  */
 class Priority implements \ufozone\phpsepa\Sepa\Validator
 {
-	public function isValid($subject) : bool
-	{
-		return (bool) preg_match("/^(NORM|HIGH)$/", $subject);
-	}
+    public function isValid($subject) : bool
+    {
+        return (bool) preg_match("/^(NORM|HIGH)$/", $subject);
+    }
 }
