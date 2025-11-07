@@ -116,7 +116,6 @@ $xml = new \ufozone\phpsepa\Sepa\Xml($sepa);
 $xml->download('sepa.xml');
 ```
 
-
 ## Running tests
 
 ```bash
