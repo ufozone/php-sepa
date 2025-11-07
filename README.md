@@ -1,11 +1,11 @@
 # php-sepa
 
-PHP class to creating SEPA files (XML) for credit transfers and direct debits in accordance with version 3.7 of the specification for remote data transmission between customer and bank according to the DFÜ agreement for the German banking industry.
+PHP class to creating SEPA files (XML) for credit transfers and direct debits in accordance with version 3.9 of the specification for remote data transmission between customer and bank according to the DFÜ agreement for the German banking industry.
 
 The versions of the standard followed are:
 
-* _pain.001.001.09_GBIC_4.xsd_  for credit transfers
-* _pain.008.001.08_GBIC_4.xsd_  for direct debits
+* _pain.001.001.09_GBIC_5.xsd_  for credit transfers
+* _pain.008.001.08_GBIC_5.xsd_  for direct debits
 
 Always verify the generated files at your bank before using them in production!
 
