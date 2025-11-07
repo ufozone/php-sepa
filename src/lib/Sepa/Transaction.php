@@ -31,6 +31,12 @@ class Transaction
 	 * @var string
 	 */
 	private $name = '';
+
+	/**
+	 * Debtor/Creditor Postal Address
+	 * @var PostalAddress|null
+	 */
+	private $postalAddress = null;
 	
 	/**
 	 * IBAN
@@ -215,6 +221,29 @@ class Transaction
 	public function getName() : string
 	{
 		return $this->name;
+	}
+
+	/**
+	 * Set debtor/creditor postal address
+	 * 
+	 * @param PostalAddress|null $postalAddress
+	 * @return Transaction
+	 */
+	public function setPostalAddress(?PostalAddress $postalAddress) : Transaction
+	{
+		$this->postalAddress = $postalAddress;
+		
+		return $this;
+	}
+	
+	/**
+	 * Get debtor/creditor postal address
+	 * 
+	 * @return PostalAddress|null
+	 */
+	public function getPostalAddress() : ?PostalAddress
+	{
+		return $this->postalAddress;
 	}
 	
 	/**
