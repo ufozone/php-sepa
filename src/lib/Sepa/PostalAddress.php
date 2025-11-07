@@ -14,39 +14,101 @@ use \ufozone\phpsepa\Sepa\Validator\Factory as ValidatorFactory;
  */
 class PostalAddress
 {
+	/**
+	 * Department
+	 * @var string
+	 */
 	private $department = '';
 
+	/**
+	 * Sub-department
+	 * @var string
+	 */
 	private $subDepartment = '';
 
+	/**
+	 * Street name
+	 * @var string
+	 */
 	private $streetName = '';
 
+	/**
+	 * Building number
+	 * @var string
+	 */
 	private $buildingNumber = '';
 
+	/**
+	 * Building name
+	 * @var string
+	 */
 	private $buildingName = '';
 
+	/**
+	 * Floor
+	 * @var string
+	 */
 	private $floor = '';
 
+	/**
+	 * Post box
+	 * @var string
+	 */
 	private $postBox = '';
 
+	/**
+	 * Room
+	 * @var string
+	 */
 	private $room = '';
 
+	/**
+	 * Post code
+	 * @var string
+	 */
 	private $postCode = '';
 
+	/**
+	 * Town name
+	 * @var string
+	 */
 	private $townName = '';
 
+	/**
+	 * Town location name
+	 * @var string
+	 */
 	private $townLocationName = '';
 
+	/**
+	 * District name
+	 * @var string
+	 */
 	private $districtName = '';
 
+	/**
+	 * Country sub-division
+	 * @var string
+	 */
 	private $countrySubDivision = '';
 
+	/**
+	 * Country
+	 * @var string
+	 */
 	private $country = '';
-	
+
+	/**
+	 * Address lines
+	 * @var array
+	 */
+	private $addressLine = [];
+
 	/**
 	 * @var ValidatorFactory
 	 */
 	private $validatorFactory;
-	
+
 	/**
 	 * Constructor
 	 * 
@@ -379,6 +441,32 @@ class PostalAddress
 	{
 		return $this->country;
 	}
+
+	/**
+	 * Add address line
+	 * 
+	 * @param string $addressLine
+	 * @return PostalAddress
+	 */
+	public function addAddressLine(string $addressLine) : PostalAddress
+	{
+		if (count($this->addressLine) >= 2)
+		{
+			throw new PostalAddressException('Address lines exceed maximum of 2', PostalAddressException::ADDRESS_LINES_EXCEED_MAXIMUM);
+		}
+		$this->addressLine[] = trim($addressLine);
+		return $this;
+	}
+
+	/**
+	 * Get address lines
+	 * 
+	 * @return array
+	 */
+	public function getAddressLines() : array
+	{
+		return $this->addressLine;
+	}
 	
 	/**
 	 * Check necessary postal address data
@@ -395,6 +483,10 @@ class PostalAddress
 		if ($this->country === '')
 		{
 			throw new PostalAddressException('Country missing', PostalAddressException::COUNTRY_MISSING);
+		}
+		if (count($this->addressLine) > 2)
+		{
+			throw new PostalAddressException('Address lines exceed maximum of 2', PostalAddressException::ADDRESS_LINES_EXCEED_MAXIMUM);
 		}
 		return true;
 	}

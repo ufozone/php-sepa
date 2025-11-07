@@ -17,4 +17,5 @@ class Exception extends \ufozone\phpsepa\Sepa\Exception
 	const COUNTRY_MISSING = 4210;
 	const COUNTRY_EMPTY = 4211;
 	const COUNTRY_INVALID = 4212;
+	const ADDRESS_LINES_EXCEED_MAXIMUM = 4310;
 }
