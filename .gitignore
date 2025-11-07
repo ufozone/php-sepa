@@ -2,3 +2,7 @@
 /.idea
 composer.lock
 .phpunit.result.cache
+.settings/org.eclipse.wst.common.project.facet.core.xml
+.settings/org.eclipse.php.core.prefs
+.project
+.buildpath
