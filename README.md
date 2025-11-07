@@ -26,24 +26,33 @@ composer require ufozone/php-sepa
 $validatorFactory = new \ufozone\phpsepa\Sepa\Validator\Factory();
 
 $sepa = new \ufozone\phpsepa\Sepa\CreditTransfer($validatorFactory);
-$sepa->setInitiator('Max Mustermann'); // Einreicher
-//$sepa->setId($msgId); // Nachrichtenreferenz
+$sepa->setInitiator('Max Mustermann');                  // Einreicher
+//$sepa->setId($msgId);                                   // Nachrichtenreferenz
 
 $payment = new \ufozone\phpsepa\Sepa\Payment($validatorFactory);
-$payment->setPriority('HIGH'); // Prioritaet NORM oder HIGH
-//$payment->setScope('INST'); // Echtzeitueberweisung
-$payment->setAccount('Max Mustermann', 'DE02370501980001802057', 'COLSDE33'); // Auftraggaber
-//$payment->setAccountCurrency($currency); // Kontowaehrung
-//$payment->disableBatchBooking(); // deaktiviere Sammelbuchung
-//$payment->setDate($date); // Faelligkeitsdatum
+$payment->setPriority('HIGH');                          // Prioritaet NORM oder HIGH
+$payment->setAccountName('Max Mustermann');             // Auftraggaber
+$payment->setAccountIban('DE02370501980001802057');     // Auftraggaber IBAN
+$payment->setAccountBic('COLSDE33');                    // Auftraggaber BIC
+//$payment->setAccountCurrency($currency);                // Kontowaehrung
+//$payment->disableBatchBooking();                        // deaktiviere Sammelbuchung
+//$payment->setDate($date);                               // Faelligkeitsdatum
+
+$transactionPostalAddress = new \ufozone\phpsepa\Sepa\PostalAddress($validatorFactory);
+$transactionPostalAddress->setStreetName('Musterstraße 12a')
+    ->setPostBox('12345')
+    ->setTownName('Musterstadt')
+    ->setPostCode('12345')
+    ->setCountry('DE');
 
 $transaction = new \ufozone\phpsepa\Sepa\Transaction($validatorFactory);
-$transaction->setEndToEndId('R2017742-1')   // Transaktions-ID (End-to-End)
-    ->setName('Karl Kümmel')                // Name des Zahlungspflichtigen
-    ->setIban('DE02300209000106531065')     // IBAN des Zahlungspflichtigen
-    ->setBic('CMCIDEDD')                    // BIC des Zahlungspflichtigen
-    ->setAmount(123.45)                     // abzubuchender Betrag
-    ->setPurpose('SALA')                    // (optional) Zahlungstyp
+$transaction->setEndToEndId('R2017742-1')               // Transaktions-ID (End-to-End)
+    ->setName('Karl Kümmel')                            // Name des Zahlungspflichtigen
+    ->setPostalAddress($transactionPostalAddress)       // Adresse des Zahlungspflichtigen
+    ->setIban('DE02300209000106531065')                 // IBAN des Zahlungspflichtigen
+    ->setBic('CMCIDEDD')                                // BIC des Zahlungspflichtigen
+    ->setAmount(123.45)                                 // abzubuchender Betrag
+    ->setPurpose('SALA')                                // (optional) Zahlungstyp
     ->setReference('Rechnung R2017742 vom 17.06.2017'); // Verwendungszweck (eine Zeile, max. 140 Zeichen))
 $payment->addTransaction($transaction);
 
@@ -68,26 +77,36 @@ $xml->download('sepa.xml');
 $validatorFactory = new \ufozone\phpsepa\Sepa\Validator\Factory();
 
 $sepa = new \ufozone\phpsepa\Sepa\DirectDebit($validatorFactory);
-$sepa->setInitiator('Max Mustermann'); // Einreicher
-//$sepa->setId($msgId); // Nachrichtenreferenz
+$sepa->setInitiator('Max Mustermann');                  // Einreicher
+//$sepa->setId($msgId);                                   // Nachrichtenreferenz
 
 $payment = new \ufozone\phpsepa\Sepa\Payment($validatorFactory);
-//$payment->setScope('CORE'); // Lastschriftart (CORE oder B2B)
-$payment->setAccount('Max Mustermann', 'DE02370501980001802057', 'COLSDE33'); // Auftraggaber
-//$payment->setAccountCurrency($currency); // Kontowaehrung
-$payment->setCreditorId('DE98ZZZ09999999999'); // Glaeubigeridentifikationsnummer
-//$payment->disableBatchBooking(); // deaktiviere Sammelbuchung
-//$payment->setDate($date); // Gewuenschter Ausfuehrungstermin
+//$payment->setScope('CORE');                             // Lastschriftart (CORE oder B2B)
+$payment->setAccountName('Max Mustermann');             // Auftraggaber
+$payment->setAccountIban('DE02370501980001802057');     // Auftraggaber IBAN
+$payment->setAccountBic('COLSDE33');                    // Auftraggaber BIC
+//$payment->setAccountCurrency($currency);                // Kontowaehrung
+$payment->setCreditorId('DE98ZZZ09999999999');          // Glaeubigeridentifikationsnummer
+//$payment->disableBatchBooking();                        // deaktiviere Sammelbuchung
+//$payment->setDate($date);                               // Gewuenschter Ausfuehrungstermin
+
+$transactionPostalAddress = new \ufozone\phpsepa\Sepa\PostalAddress($validatorFactory);
+$transactionPostalAddress->setStreetName('Musterstraße 12a')
+    ->setPostBox('12345')
+    ->setTownName('Musterstadt')
+    ->setPostCode('12345')
+    ->setCountry('DE');
 
 $transaction = new \ufozone\phpsepa\Sepa\Transaction($validatorFactory);
-$transaction->setEndToEndId('R2017742-1')   // Transaktions-ID (End-to-End)
-    ->setName('Karl Kümmel')                // Name des Zahlungspflichtigen
-    ->setIban('DE02300209000106531065')     // IBAN des Zahlungspflichtigen
-    ->setBic('CMCIDEDD')                    // BIC des Zahlungspflichtigen
-    ->setAmount(123.45)                     // abzubuchender Betrag
-    ->setPurpose('SALA')                    // (optional) Zahlungstyp
-    ->setMandateId('M20170704-200')         // Mandatsreferenz
-    ->setMandateDate('2017-07-04')          // Mandatsdatum
+$transaction->setEndToEndId('R2017742-1')               // Transaktions-ID (End-to-End)
+    ->setName('Karl Kümmel')                            // Name des Zahlungspflichtigen
+    ->setPostalAddress($transactionPostalAddress)       // Adresse des Zahlungspflichtigen
+    ->setIban('DE02300209000106531065')                 // IBAN des Zahlungspflichtigen
+    ->setBic('CMCIDEDD')                                // BIC des Zahlungspflichtigen
+    ->setAmount(123.45)                                 // abzubuchender Betrag
+    ->setPurpose('SALA')                                // (optional) Zahlungstyp
+    ->setMandateId('M20170704-200')                     // Mandatsreferenz
+    ->setMandateDate('2017-07-04')                      // Mandatsdatum
     ->setReference('Rechnung R2017742 vom 17.06.2017'); // Verwendungszweck (eine Zeile, max. 140 Zeichen))
 $payment->addTransaction($transaction);
 
@@ -103,6 +122,7 @@ $xml->download('sepa.xml');
 ```bash
 vendor/bin/phpunit
 ```
+
 ## External Resources
 
 * [German specification for remote data transfer between customer and bank according to the DFÜ agreement "Specification of Data Formats"](https://www.ebics.de/de/datenformate)
