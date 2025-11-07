@@ -61,6 +61,12 @@ class Payment
 	 * @var string
 	 */
 	private $accountName = '';
+
+	/**
+	 * Creditor or Debtor Postal Address
+	 * @var PostalAddress|null
+	 */
+	private $accountPostalAddress = null;
 	
 	/**
 	 * Creditor or Debtor IBAN
@@ -372,6 +378,29 @@ class Payment
 		$this->accountName = $name;
 		
 		return $this;
+	}
+
+	/**
+	 * Set applicant postal address
+	 * 
+	 * @param PostalAddress|null $postalAddress
+	 * @return Payment
+	 */
+	public function setAccountPostalAddress(?PostalAddress $postalAddress) : Payment
+	{
+		$this->accountPostalAddress = $postalAddress;
+		
+		return $this;
+	}
+
+	/**
+	 * Get applicant postal address
+	 * 
+	 * @return PostalAddress|null
+	 */
+	public function getAccountPostalAddress() : ?PostalAddress
+	{
+		return $this->accountPostalAddress;
 	}
 	
 	/**

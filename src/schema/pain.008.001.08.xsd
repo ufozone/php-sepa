@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Wichtiger Hinweis: Für Anlage 3 V 3.7 werden alle DK-SEPA-TVS als GBIC_4-Dateien bereitgestellt. -->
-<!-- Mit XMLSpy v2020 rel. 2 (http://www.altova.com) von Sabine Wenzel (Deutsche Kreditwirtschaft, DK) am 12.01.2023 bearbeitet -->
-<!-- Von der Deutschen Kreditwirtschaft bereitgestelltes Technical Validation Subset (TVS) für die Einreichung von Sammlern für SEPA-Basislastschriften (CORE) und SEPA-Firmenlastschriften (B2B) auf Basis der ISO-Version 08 der pain.001-Nachricht. Jede pain.008-Nachricht muss sortenrein sein (CORE oder B2B). Im Falle einer Adressangabe (Debtor, Creditor) muss ist diese strukturiert sein (EPC-Zielbild 2025 im DK-Schema GBIC_4 bereits ab 2023 erforderlich, um Kunden doppelten Umstellungsaufwand zu ersparen). -->
-<!-- Version gemäß DFÜ-Abkommen Anlage 3, Version 3.7, gültig ab November 2023 -->
-<!-- Wichtiger Hinweis: Für Anlage 3 V 3.7 werden alle DK-SEPA-TVS als GBIC_4-Dateien bereitgestellt. -->
+<!-- Mit XMLSpy v2022 (x64) (http://www.altova.com) von der SIZ GmbH bearbeitet -->
+<!-- Technical Valitdation Subset (TVS) der Deutschen Kreditwirtschaft (GBIC) für die Einreichung von             -->
+<!-- SEPA-Lastschriften gemäß Kapitel 2 der Anlage 3 des DFÜ-Abkommens ab Version V 3.9    -->
+<!-- WICHTIGE INFO: Diese xsd vom 01.04.2025 wird unter dem Namen CCU_GBIC_5 geführt, da einige Anpassungen erfolgten:  -->
+<!-- Gegenüber GBIC_4 gab es Anpassungen - die hybride Adressbelegung wurde eingeführt und als Verbesserung der Syntaxprüfung bei Betragsangaben die Währung Euro wieder vorgegeben -->
 <xs:schema xmlns="urn:iso:std:iso:20022:tech:xsd:pain.008.001.08" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:iso:std:iso:20022:tech:xsd:pain.008.001.08" elementFormDefault="qualified">
 	<xs:element name="Document" type="Document_SDD"/>
 	<xs:complexType name="AccountIdentification4Choice">
@@ -1664,11 +1664,6 @@ Decimal fractions of seconds may be included. In this case, the involved parties
 						<xs:annotation>
 							<xs:documentation source="Yellow Field"/>
 							<xs:documentation source="Rulebook">AT-E004 The Address of the Creditor.</xs:documentation>
-							<xs:documentation source="Usage Rule">
-If ‘Address Line’ is used, then ‘Postal Address’ sub-elements other than ‘Country’ are forbidden. 
-A combination of ‘Address Line’ and 'Country’ is allowed. 
-If 'Address Line' is not used, then at least 'Town Name' and 'Country' must be used.
-              </xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
@@ -1765,11 +1760,6 @@ If 'Address Line' is not used, then at least 'Town Name' and 'Country' must be u
 						<xs:annotation>
 							<xs:documentation source="Yellow Field"/>
 							<xs:documentation source="Rulebook">AT-P005 The Address of the Debtor (only mandatory when the Creditor PSP or the Debtor PSP is located a non-EEA SEPA country or territory).</xs:documentation>
-							<xs:documentation source="Usage Rule">
-If ‘Address Line’ is used, then ‘Postal Address’ sub-elements other than ‘Country’ are forbidden. 
-A combination of ‘Address Line’ and 'Country’ is allowed; it is recommended when either the Debtor Agent or Creditor Agent is a non-EEA SEPA PSP. 
-If 'Address Line' is not used, then at least 'Town Name' and 'Country' must be used.
-              </xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element name="Id" type="Party38Choice_SDD" minOccurs="0">
@@ -2433,11 +2423,10 @@ Usage: This is used by the initiating party to provide information concerning th
 							<xs:documentation source="Yellow Field"/>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="AdrLine" type="Max70Text" minOccurs="0" maxOccurs="0">
+					<xs:element name="AdrLine" type="Max70Text" minOccurs="0" maxOccurs="2">
 						<xs:annotation>
 							<xs:documentation source="Yellow Field"/>
 							<xs:documentation source="Usage Rule">Only two occurrences are allowed.</xs:documentation>
-							<xs:documentation source="Usage Rule">If ‘Address Line’ is used, then ‘Postal Address’ sub-elements other than ‘Country’ are forbidden. A combination of ‘Address Line’ and 'Country’ is allowed.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
@@ -2518,14 +2507,10 @@ Usage: This is used by the initiating party to provide information concerning th
 							<xs:documentation source="Yellow Field"/>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="AdrLine" type="Max70Text" minOccurs="0" maxOccurs="0">
+					<xs:element name="AdrLine" type="Max70Text" minOccurs="0" maxOccurs="2">
 						<xs:annotation>
 							<xs:documentation source="Yellow Field"/>
 							<xs:documentation source="Usage Rule">Only two occurrences are allowed.</xs:documentation>
-							<xs:documentation source="Usage Rule">
-If ‘Address Line’ is used, then ‘Postal Address’ sub-elements other than ‘Country’ are forbidden. 
-A combination of ‘Address Line’ and 'Country’ is allowed; it is recommended when either Debtor Agent or Creditor Agent is a non-EEA SEPA PSP.
-              </xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
