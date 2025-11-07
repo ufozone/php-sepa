@@ -616,6 +616,10 @@ class Xml
 		// Cdtr/Dbtr
 		$xml->startElement($txClnt);
 		$xml->writeElement('Nm', $this->formatString($transaction->getName(), 70));
+		if ($postalAddress = $transaction->getPostalAddress())
+		{
+			$this->generatePostalAddress($postalAddress, $xml);
+		}
 		$xml->endElement(); // Cdtr/Dbtr
 		
 		// CdtrAcct/DbtrAcct
@@ -643,6 +647,79 @@ class Xml
 			$xml->endElement(); // RmtInf
 		}
 		$xml->endElement(); // Transaction
+	}
+
+	/**
+	 * Generate postal address
+	 * 
+	 * @param PostalAddress $postalAddress
+	 * @param \XMLWriter $xml
+	 */
+	private function generatePostalAddress(PostalAddress $postalAddress, \XMLWriter $xml)
+	{
+		// PstlAdr
+		$xml->startElement('PstlAdr');
+		if ($department = $postalAddress->getDepartment())
+		{
+	        $xml->writeElement('Dept', $this->formatString($department, 70));
+		}
+	    if ($subDepartment = $postalAddress->getSubDepartment())
+		{
+		    $xml->writeElement('SubDept', $this->formatString($subDepartment, 70));
+		}
+	    if ($streetName = $postalAddress->getStreetName())
+		{
+		    $xml->writeElement('StrtNm', $this->formatString($streetName, 70));
+		}
+	    if ($buildingNumber = $postalAddress->getBuildingNumber())
+		{
+		    $xml->writeElement('BldgNb', $this->formatString($buildingNumber, 16));
+		}
+		if ($buildingName = $postalAddress->getBuildingName())
+		{
+		    $xml->writeElement('BldgNm', $this->formatString($buildingName, 35));
+		}
+		if ($floor = $postalAddress->getFloor())
+		{
+			$xml->writeElement('Flr', $this->formatString($floor, 70));
+		}
+		if ($postBox = $postalAddress->getPostBox())
+		{
+		    $xml->writeElement('PstBx', $this->formatString($postBox, 16));
+		}
+		if ($room = $postalAddress->getRoom())
+		{
+			$xml->writeElement('Room', $this->formatString($room, 70));
+		}
+		if ($postCode = $postalAddress->getPostCode())
+		{
+		    $xml->writeElement('PstCd', $this->formatString($postCode, 16));
+		}
+		if ($townName = $postalAddress->getTownName())
+		{
+		    $xml->writeElement('TwnNm', $this->formatString($townName, 35));
+		}
+		if ($townLocationName = $postalAddress->getTownLocationName())
+		{
+			$xml->writeElement('TwnLctnNm', $this->formatString($townLocationName, 35));
+		}
+		if ($districtName = $postalAddress->getDistrictName())
+		{
+			$xml->writeElement('DstrctNm', $this->formatString($districtName, 35));
+		}
+		if ($countrySubDivision = $postalAddress->getCountrySubDivision())
+		{
+			$xml->writeElement('CtrySubDvsn', $this->formatString($countrySubDivision, 35));
+		}
+		if ($country = $postalAddress->getCountry())
+		{
+		    $xml->writeElement('Ctry', strtoupper($country));
+		}
+		foreach ($postalAddress->getAddressLines() as $addressLine)
+		{
+			$xml->writeElement('AdrLine', $this->formatString($addressLine, 70));
+		}
+		$xml->endElement(); // PstlAdr
 	}
 	
 	/**
