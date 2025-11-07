@@ -393,9 +393,9 @@ class Xml
 		// Dbtr/Cdtr
 		$xml->startElement($pmtClnt);
 		$xml->writeElement('Nm', $this->formatString($payment->getAccountName(), 70));
-		if ($postalAddress = $payment->getAccountPostalAddress())
+		if ($accountPostalAddress = $payment->getAccountPostalAddress())
 		{
-			$this->generatePostalAddress($postalAddress, $xml);
+			$this->generatePostalAddress($accountPostalAddress, $xml);
 		}
 		$xml->endElement(); // Dbtr/Cdtr
 		
