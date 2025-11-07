@@ -64,7 +64,7 @@ class Payment
 
 	/**
 	 * Creditor or Debtor Postal Address
-	 * @var PostalAddress
+	 * @var PostalAddress|null
 	 */
 	private $accountPostalAddress = null;
 	
@@ -383,10 +383,10 @@ class Payment
 	/**
 	 * Set applicant postal address
 	 * 
-	 * @param PostalAddress $postalAddress
+	 * @param PostalAddress|null $postalAddress
 	 * @return Payment
 	 */
-	public function setAccountPostalAddress(PostalAddress $postalAddress) : Payment
+	public function setAccountPostalAddress(?PostalAddress $postalAddress) : Payment
 	{
 		$this->accountPostalAddress = $postalAddress;
 		
@@ -396,7 +396,7 @@ class Payment
 	/**
 	 * Get applicant postal address
 	 * 
-	 * @return PostalAddress
+	 * @return PostalAddress|null
 	 */
 	public function getAccountPostalAddress() : ?PostalAddress
 	{
