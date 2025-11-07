@@ -393,6 +393,72 @@ class Xml
 		// Dbtr/Cdtr
 		$xml->startElement($pmtClnt);
 		$xml->writeElement('Nm', $this->formatString($payment->getAccountName(), 70));
+		if ($address = $payment->getAccountPostalAddress())
+		{
+			// PstlAdr
+		    $xml->startElement('PstlAdr');
+		    if ($department = $address->getDepartment())
+			{
+		        $xml->writeElement('Dept', $this->formatString($department, 70));
+		    }
+		    if ($subDepartment = $address->getSubDepartment())
+			{
+		        $xml->writeElement('SubDept', $this->formatString($subDepartment, 70));
+		    }
+		    if ($streetName = $address->getStreetName())
+			{
+		        $xml->writeElement('StrtNm', $this->formatString($streetName, 70));
+		    }
+		    if ($buildingNumber = $address->getBuildingNumber())
+			{
+		        $xml->writeElement('BldgNb', $this->formatString($buildingNumber, 16));
+		    }
+			if ($buildingName = $address->getBuildingName())
+			{
+		        $xml->writeElement('BldgNm', $this->formatString($buildingName, 35));
+		    }
+			if ($floor = $address->getFloor())
+			{
+				$xml->writeElement('Flr', $this->formatString($floor, 70));
+		    }
+			if ($postBox = $address->getPostBox())
+			{
+		        $xml->writeElement('PstBx', $this->formatString($postBox, 16));
+			}
+			if ($room = $address->getRoom())
+			{
+				$xml->writeElement('Room', $this->formatString($room, 70));
+			}
+			if ($postCode = $address->getPostCode())
+			{
+		        $xml->writeElement('PstCd', $this->formatString($postCode, 16));
+		    }
+		    if ($townName = $address->getTownName())
+			{
+		        $xml->writeElement('TwnNm', $this->formatString($townName, 35));
+		    }
+			if ($townLocationName = $address->getTownLocationName())
+			{
+				$xml->writeElement('TwnLctnNm', $this->formatString($townLocationName, 35));
+			}
+			if ($districtName = $address->getDistrictName())
+			{
+				$xml->writeElement('DstrctNm', $this->formatString($districtName, 35));
+			}
+			if ($countrySubDivision = $address->getCountrySubDivision())
+			{
+				$xml->writeElement('CtrySubDvsn', $this->formatString($countrySubDivision, 35));
+			}
+		    if ($country = $address->getCountry())
+			{
+		        $xml->writeElement('Ctry', strtoupper($country));
+		    }
+			foreach ($address->getAddressLines() as $addressLine)
+			{
+				$xml->writeElement('AdrLine', $this->formatString($addressLine, 70));
+			}
+		    $xml->endElement(); // PstlAdr
+		}
 		$xml->endElement(); // Dbtr/Cdtr
 		
 		// DbtrAcct/CdtrAcct
