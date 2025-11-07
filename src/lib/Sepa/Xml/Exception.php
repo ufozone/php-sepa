@@ -12,7 +12,7 @@ namespace ufozone\phpsepa\Sepa\Xml;
  */
 class Exception extends \ufozone\phpsepa\Sepa\Exception
 {
-	const CANNOT_OPEN_TMP_FILE = 5100;
-	const CANNOT_CREATE_XML = 5200;
-	const SCHEMA_FILE_NOT_FOUND = 5300;
+    const CANNOT_OPEN_TMP_FILE = 5100;
+    const CANNOT_CREATE_XML = 5200;
+    const SCHEMA_FILE_NOT_FOUND = 5300;
 }
