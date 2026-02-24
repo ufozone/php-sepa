@@ -89,7 +89,7 @@ $payment->setAccountName('Max Mustermann');              // Auftraggeber (Credit
 $payment->setAccountIban('DE02200505501015871393');      // Auftraggeber IBAN
 $payment->setAccountBic('HASPDEHHXXX');                  // Auftraggeber BIC
 $payment->setCreditorId('DE98ZZZ09999999999');           // Glaeubigeridentifikationsnummer
-//$payment->setAccountCurrency('EUR')  ;                 // Kontowaehrung
+//$payment->setAccountCurrency('EUR');                     // Kontowaehrung
 //$payment->disableBatchBooking();                         // Sammelbuchung deaktivieren
 $payment->setDate(new \DateTime('+5 days'));             // Gewuenschter Ausfuehrungstermin
 
@@ -109,8 +109,8 @@ $transaction->setEndToEndId('R2017742-1')                // Transaktions-ID (ein
     ->setAmount(123.45)                                  // Abzubuchender Betrag
     ->setPurpose('SCVE')                                 // (optional) Zahlungstyp
     ->setMandateId('M20170704-200')                      // Mandatsreferenz
-    ->setMandateDate('2017-07-04')                       // Mandatsdatum (YYYY-MM-DD)
-    ->setReference('Rechnung R2017742 vom 17.06.2017');  // Verwendungszweck (max. 140 Zeichen)
+    ->setMandateDate('2017-07-04')                       // Datum Mandatserteilung (YYYY-MM-DD)
+    ->setReference('Rechnung R2017742 vom 17.06.2017');  // Verwendungszweck (eine Zeile, max. 140 Zeichen)
 
 $payment->addTransaction($transaction);
 
