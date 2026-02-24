@@ -32,8 +32,8 @@ $sepa->setId('MSG-20240224-1');                          // Nachrichtenreferenz
 $payment = new \ufozone\phpsepa\Sepa\Payment($validatorFactory);
 //$payment->setPriority('HIGH');                           // Prioritaet: NORM oder HIGH
 $payment->setAccountName('Max Mustermann');              // Auftraggeber (Debitor)
-$payment->setAccountIban('DE02370501980001802057');      // Auftraggeber IBAN
-$payment->setAccountBic('COLSDE33');                     // Auftraggeber BIC
+$payment->setAccountIban('DE02370502990000684712');      // Auftraggeber IBAN
+$payment->setAccountBic('COKSDE33');                     // Auftraggeber BIC
 //$payment->setAccountCurrency('EUR');                     // Kontowaehrung
 //$payment->disableBatchBooking();                         // Sammelbuchung deaktivieren
 $payment->setDate(new \DateTime('+1 day'));              // Gewuenschter Ausfuehrungstermin
@@ -53,7 +53,7 @@ $transaction->setEndToEndId('R2017742-1')                // Transaktions-ID (ein
     ->setBic('CMCIDEDD')                                 // BIC des Zahlungsempfaengers
     ->setAmount(123.45)                                  // Betrag
     ->setPurpose('SALA')                                 // (optional) Zahlungstyp
-    ->setReference('Rechnung R2017742 vom 17.06.2017');  // Verwendungszweck (eine Zeile, max. 140 Zeichen)
+    ->setReference('Lohn/Gehalt Januar 2026');           // Verwendungszweck (eine Zeile, max. 140 Zeichen)
 
 $payment->addTransaction($transaction);
 
@@ -63,8 +63,7 @@ $transaction->setEndToEndId('R2017742-2')
     ->setIban('DE02500105170137075030')
     ->setBic('INGDDEFFXXX')
     ->setAmount(234.56)
-    ->setPurpose('SALA')
-    ->setReference('Kinderfahrrad');
+    ->setReference('Kleinanzeigen Kinderfahrrad');
 
 $payment->addTransaction($transaction);
 
@@ -87,10 +86,10 @@ $payment = new \ufozone\phpsepa\Sepa\Payment($validatorFactory);
 //$payment->setScope('CORE');                              // Lastschriftart (CORE oder B2B)
 $payment->setSequenceType('OOFF');                       // Sequenztyp (FRST, RCUR, OOFF, FNAL)
 $payment->setAccountName('Max Mustermann');              // Auftraggeber (Creditor)
-$payment->setAccountIban('DE02370501980001802057');      // Auftraggeber IBAN
-$payment->setAccountBic('COLSDE33');                     // Auftraggeber BIC
+$payment->setAccountIban('DE02200505501015871393');      // Auftraggeber IBAN
+$payment->setAccountBic('HASPDEHHXXX');                  // Auftraggeber BIC
 $payment->setCreditorId('DE98ZZZ09999999999');           // Glaeubigeridentifikationsnummer
-//$payment->setAccountCurrency($currency);                 // Kontowaehrung
+//$payment->setAccountCurrency('EUR')  ;                 // Kontowaehrung
 //$payment->disableBatchBooking();                         // Sammelbuchung deaktivieren
 $payment->setDate(new \DateTime('+5 days'));             // Gewuenschter Ausfuehrungstermin
 
@@ -105,8 +104,8 @@ $transaction = new \ufozone\phpsepa\Sepa\Transaction($validatorFactory);
 $transaction->setEndToEndId('R2017742-1')                // Transaktions-ID (eindeutig)
     ->setName('Karl Kümmel')                             // Name des Zahlungspflichtigen (Debitor)
     ->setPostalAddress($transactionPostalAddress)        // Adresse des Zahlungspflichtigen
-    ->setIban('DE02300209000106531065')                  // IBAN des Zahlungspflichtigen
-    ->setBic('CMCIDEDD')                                 // BIC des Zahlungspflichtigen
+    ->setIban('DE02700100800030876808')                  // IBAN des Zahlungspflichtigen
+    ->setBic('PBNKDEFFXXX')                              // BIC des Zahlungspflichtigen
     ->setAmount(123.45)                                  // Abzubuchender Betrag
     ->setPurpose('SCVE')                                 // (optional) Zahlungstyp
     ->setMandateId('M20170704-200')                      // Mandatsreferenz
