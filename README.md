@@ -24,6 +24,7 @@ composer require ufozone/php-sepa
 
 ```php
 $validatorFactory = new \ufozone\phpsepa\Sepa\Validator\Factory();
+$executionDate = new \DateTime('+2 day');
 
 $sepa = new \ufozone\phpsepa\Sepa\CreditTransfer($validatorFactory);
 $sepa->setInitiator('Max Mustermann');                   // Einreicher
@@ -36,7 +37,7 @@ $payment->setAccountIban('DE02370502990000684712');      // Auftraggeber IBAN
 $payment->setAccountBic('COKSDE33');                     // Auftraggeber BIC
 //$payment->setAccountCurrency('EUR');                     // Kontowaehrung
 //$payment->disableBatchBooking();                         // Sammelbuchung deaktivieren
-$payment->setDate('2026-03-003');                        // Gewuenschter Ausfuehrungstermin
+$payment->setDate($executionDate->format('Y-m-d'));      // Gewuenschter Ausfuehrungstermin
 
 $transactionPostalAddress = new \ufozone\phpsepa\Sepa\PostalAddress($validatorFactory);
 $transactionPostalAddress->setStreetName('Musterstraße 12a')
@@ -77,6 +78,7 @@ $xml->download('sepa.xml');
 
 ```php
 $validatorFactory = new \ufozone\phpsepa\Sepa\Validator\Factory();
+$executionDate = new \DateTime('+5 day');
 
 $sepa = new \ufozone\phpsepa\Sepa\DirectDebit($validatorFactory);
 $sepa->setInitiator('Max Mustermann');                   // Einreicher
@@ -91,7 +93,7 @@ $payment->setAccountBic('HASPDEHHXXX');                  // Auftraggeber BIC
 $payment->setCreditorId('DE98ZZZ09999999999');           // Glaeubigeridentifikationsnummer
 //$payment->setAccountCurrency('EUR');                     // Kontowaehrung
 //$payment->disableBatchBooking();                         // Sammelbuchung deaktivieren
-$payment->setDate('2026-03-05');                         // Gewuenschter Ausfuehrungstermin
+$payment->setDate($executionDate->format('Y-m-d'));      // Gewuenschter Ausfuehrungstermin
 
 $transactionPostalAddress = new \ufozone\phpsepa\Sepa\PostalAddress($validatorFactory);
 $transactionPostalAddress->setStreetName('Musterstraße 12a')
