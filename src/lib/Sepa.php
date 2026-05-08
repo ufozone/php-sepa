@@ -133,7 +133,7 @@ abstract class Sepa
     {
         if (!$initiator = trim($initiator))
         {
-            throw new SepaException('Initiator empty', 1200);
+            throw new SepaException('Initiator empty', SepaException::INITIATOR_EMPTY);
         }
         $this->initiator = $initiator;
         
