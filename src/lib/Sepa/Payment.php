@@ -128,7 +128,7 @@ class Payment
         }
         if (!$this->validatorFactory->getValidator("Id1")->isValid($id))
         {
-            throw new PaymentException('Payment Information Identifier invalid (' . $id . ')', PaymentException::PAYMENT_INFORMATION_ID_INVALID);
+            throw new PaymentException('Payment Information Identifier invalid ({id})', PaymentException::PAYMENT_INFORMATION_ID_INVALID, null, ['id' => $id]);
         }
         $this->id = $id;
         
@@ -161,7 +161,7 @@ class Payment
         }
         if (!$this->validatorFactory->getValidator("Scope")->isValid($scope))
         {
-            throw new PaymentException('Scope wrong (' . $scope . ')', PaymentException::SCOPE_INVALID);
+            throw new PaymentException('Scope wrong ({scope})', PaymentException::SCOPE_INVALID, null, ['scope' => $scope]);
         }
         $this->scope = $scope;
         
@@ -194,7 +194,7 @@ class Payment
         }
         if (!$this->validatorFactory->getValidator("Sequence")->isValid($sequence))
         {
-            throw new PaymentException('Sequence (' . $sequence . ') invalid', PaymentException::SEQUENCE_INVALID);
+            throw new PaymentException('Sequence ({sequence}) invalid', PaymentException::SEQUENCE_INVALID, null, ['sequence' => $sequence]);
         }
         $this->sequence = $sequence;
         
@@ -226,7 +226,7 @@ class Payment
         }
         if (!$this->validatorFactory->getValidator("CreditorId")->isValid($creditorId))
         {
-            throw new PaymentException('Creditor Identifier (' . $creditorId . ') invalid', PaymentException::CREDITOR_ID_INVALID);
+            throw new PaymentException('Creditor Identifier ({creditorId}) invalid', PaymentException::CREDITOR_ID_INVALID, null, ['creditorId' => $creditorId]);
         }
         $this->creditorId = $creditorId;
         
@@ -259,7 +259,7 @@ class Payment
         }
         if (!$this->validatorFactory->getValidator("Priority")->isValid($priority))
         {
-            throw new PaymentException('Priority (' . $priority . ') invalid, must be NORM or HIGH', PaymentException::PRIORITY_INVALID);
+            throw new PaymentException('Priority ({priority}) invalid, must be NORM or HIGH', PaymentException::PRIORITY_INVALID, null, ['priority' => $priority]);
         }
         $this->priority = $priority;
         
@@ -325,7 +325,7 @@ class Payment
         }
         if (!$this->validatorFactory->getValidator("Date")->isValid($date))
         {
-            throw new PaymentException('Date (' . $date . ') invalid, must be YYYY-MM-DD', PaymentException::DATE_INVALID);
+            throw new PaymentException('Date ({date}) invalid, must be YYYY-MM-DD', PaymentException::DATE_INVALID, null, ['date' => $date]);
         }
         $this->date = $date;
         
@@ -428,7 +428,7 @@ class Payment
         }
         if (!$this->validatorFactory->getValidator("Iban")->isValid($iban))
         {
-            throw new PaymentException('Debtor or Creditor IBAN (' . $iban . ') invalid', PaymentException::ACCOUNT_IBAN_INVALID);
+            throw new PaymentException('Debtor or Creditor IBAN ({iban}) invalid', PaymentException::ACCOUNT_IBAN_INVALID, null, ['iban' => $iban]);
         }
         $this->accountIban = $iban;
         
@@ -460,7 +460,7 @@ class Payment
         }
         if (!$this->validatorFactory->getValidator("Bic")->isValid($bic))
         {
-            throw new PaymentException('Debtor or Creditor BIC (' . $bic . ') invalid', PaymentException::ACCOUNT_BIC_INVALID);
+            throw new PaymentException('Debtor or Creditor BIC ({bic}) invalid', PaymentException::ACCOUNT_BIC_INVALID, null, ['bic' => $bic]);
         }
         $this->accountBic = str_pad($bic, 11, 'X');
         
@@ -493,7 +493,7 @@ class Payment
         }
         if (!$this->validatorFactory->getValidator("Currency")->isValid($currency))
         {
-            throw new PaymentException('Debtor or Creditor currency (' . $currency . ') invalid', PaymentException::ACCOUNT_CURRENCY_INVALID);
+            throw new PaymentException('Debtor or Creditor currency ({currency}) invalid', PaymentException::ACCOUNT_CURRENCY_INVALID, null, ['currency' => $currency]);
         }
         $this->accountCurrency = $currency;
         

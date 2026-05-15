@@ -105,7 +105,7 @@ abstract class Sepa
         }
         if (!$this->validatorFactory->getValidator("Id1")->isValid($id))
         {
-            throw new SepaException('Message Identifier invalid (' . $id . ')', SepaException::MESSAGE_ID_INVALID);
+            throw new SepaException('Message Identifier invalid ({id})', SepaException::MESSAGE_ID_INVALID, null, ['id' => $id]);
         }
         $this->id = $id;
         
