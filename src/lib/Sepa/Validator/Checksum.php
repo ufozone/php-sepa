@@ -25,7 +25,7 @@ trait Checksum
             $asciiCodeElement = ord($checkSum[$i]);
             if ($asciiCodeElement > 64 && $asciiCodeElement < 91)
             {
-                $checkSum = substr($checkSum, 0, $i) . (string) $asciiCodeElement - 55 . substr($checkSum, $i + 1);
+                $checkSum = substr($checkSum, 0, $i) . (string) ($asciiCodeElement - 55) . substr($checkSum, $i + 1);
             }
         }
         $left = 0;
