@@ -18,7 +18,7 @@ class Payment
      * Payment Information Identifier
      * @var string
      */
-    private $id = '';
+    private string $id = '';
     
     /**
      * Scope (CORE, B2B, INST)
@@ -30,78 +30,78 @@ class Payment
      * Sequence (OOFF, FRST, RCUR, FNAL)
      * @var string
      */
-    private $sequence = '';
+    private string $sequence = '';
     
     /**
      * Creditor Identifier
      * @var string
      */
-    private $creditorId = '';
+    private string $creditorId = '';
     
     /**
      * Global Priority
      * @var string
      */
-    private $priority = '';
+    private string $priority = '';
     
     /**
      * Batch Booking
      * @var bool
      */
-    private $batchBooking = true;
+    private bool $batchBooking = true;
 
     /**
      * Execution Date
      * @var \DateTimeImmutable
      */
-    private $executionDate;
+    private ?\DateTimeImmutable $executionDate = null;
     
     /**
      * Creditor or Debtor Name
      * @var string
      */
-    private $accountName = '';
+    private string $accountName = '';
 
     /**
      * Creditor or Debtor Postal Address
      * @var PostalAddress|null
      */
-    private $accountPostalAddress = null;
+    private ?PostalAddress $accountPostalAddress = null;
     
     /**
      * Creditor or Debtor IBAN
      * @var string
      */
-    private $accountIban = '';
+    private string $accountIban = '';
     
     /**
      * Creditor or Debtor BIC
      * @var string
      */
-    private $accountBic = '';
+    private string $accountBic = '';
     
     /**
      * Creditor or Debtor Currency
      * @var string
      */
-    private $accountCurrency = '';
+    private string $accountCurrency = '';
     
     /**
      * Ultimate Creditor or Debtor Name
      * @var string
      */
-    private $ultimateName = '';
+    private string $ultimateName = '';
     
     /**
      * Payment Transactions
      * @var array
      */
-    private $transactions = [];
+    private array $transactions = [];
     
     /**
      * @var ValidatorFactory
      */
-    private $validatorFactory;
+    private ValidatorFactory $validatorFactory;
     
     /**
      * Constructor

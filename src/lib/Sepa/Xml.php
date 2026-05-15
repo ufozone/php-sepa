@@ -18,25 +18,25 @@ class Xml
      * Format XML without indentation and extra space
      * @var bool
      */
-    private $compression = false;
+    private bool $compression = false;
     
     /**
      * Temp file
      * @var string
      */
-    private $tmpFile = null;
+    private ?string $tmpFile = null;
     
     /**
      * Final file
      * @var string
      */
-    private $fnlFile = null;
+    private ?string $fnlFile = null;
     
     /**
      * SEPA instance
      * @var Sepa
      */
-    private $sepa = null;
+    private ?Sepa $sepa = null;
     
     /**
      * Create XML instance

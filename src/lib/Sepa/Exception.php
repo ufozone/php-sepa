@@ -24,12 +24,12 @@ class Exception extends \Exception
      * tokens that get filled from the exception's context.
      * @var array<int, string>
      */
-    protected static $translations = [];
+    protected static array $translations = [];
 
     /**
      * @var array<string, mixed>
      */
-    protected $context = [];
+    protected array $context = [];
 
     /**
      * @param string $message Default English message; may contain {placeholder} tokens.

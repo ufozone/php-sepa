@@ -18,96 +18,96 @@ class PostalAddress
      * Department
      * @var string
      */
-    private $department = '';
+    private string $department = '';
 
     /**
      * Sub-department
      * @var string
      */
-    private $subDepartment = '';
+    private string $subDepartment = '';
 
     /**
      * Street name
      * @var string
      */
-    private $streetName = '';
+    private string $streetName = '';
 
     /**
      * Building number
      * @var string
      */
-    private $buildingNumber = '';
+    private string $buildingNumber = '';
 
     /**
      * Building name
      * @var string
      */
-    private $buildingName = '';
+    private string $buildingName = '';
 
     /**
      * Floor
      * @var string
      */
-    private $floor = '';
+    private string $floor = '';
 
     /**
      * Post box
      * @var string
      */
-    private $postBox = '';
+    private string $postBox = '';
 
     /**
      * Room
      * @var string
      */
-    private $room = '';
+    private string $room = '';
 
     /**
      * Post code
      * @var string
      */
-    private $postCode = '';
+    private string $postCode = '';
 
     /**
      * Town name
      * @var string
      */
-    private $townName = '';
+    private string $townName = '';
 
     /**
      * Town location name
      * @var string
      */
-    private $townLocationName = '';
+    private string $townLocationName = '';
 
     /**
      * District name
      * @var string
      */
-    private $districtName = '';
+    private string $districtName = '';
 
     /**
      * Country sub-division
      * @var string
      */
-    private $countrySubDivision = '';
+    private string $countrySubDivision = '';
 
     /**
      * Country
      * @var string
      */
-    private $country = '';
+    private string $country = '';
 
     /**
      * Address lines
      * @var array
      */
-    private $addressLine = [];
+    private array $addressLine = [];
 
     /**
      * @var ValidatorFactory
      */
-    private $validatorFactory;
+    private ValidatorFactory $validatorFactory;
 
     /**
      * Constructor

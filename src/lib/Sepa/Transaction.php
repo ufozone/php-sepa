@@ -18,108 +18,108 @@ class Transaction
      * Instruction Identifier
      * @var string
      */
-    private $id = '';
+    private string $id = '';
     
     /**
      * End-to-End Identifier
      * @var string
      */
-    private $endToEndId = '';
+    private string $endToEndId = '';
     
     /**
      * Debtor/Creditor Name
      * @var string
      */
-    private $name = '';
+    private string $name = '';
 
     /**
      * Debtor/Creditor Postal Address
      * @var PostalAddress|null
      */
-    private $postalAddress = null;
+    private ?PostalAddress $postalAddress = null;
     
     /**
      * IBAN
      * @var string
      */
-    private $iban = '';
+    private string $iban = '';
     
     /**
      * BIC
      * @var string
      */
-    private $bic = '';
+    private string $bic = '';
     
     /**
      * Amount
      * @var integer
      */
-    private $amount = 0;
+    private int $amount = 0;
     
     /**
      * Currency
      * @var string
      */
-    private $currency = 'EUR';
+    private string $currency = 'EUR';
     
     /**
      * Ultimate Debtor or Creditor
      * @var string
      */
-    private $ultimateName = '';
+    private string $ultimateName = '';
     
     /**
      * Purpose Code
      * @var string
      */
-    private $purpose = '';
+    private string $purpose = '';
     
     /**
      * Unstructured Reference Text
      * @var string
      */
-    private $reference = '';
+    private string $reference = '';
     
     /**
      * Mandate Identifier
      * @var string
      */
-    private $mandateId = '';
+    private string $mandateId = '';
     
     /**
      * Mandate Date
      * @var string
      */
-    private $mandateDate = '';
+    private string $mandateDate = '';
     
     /**
      * Mandate Changed
      * @var bool
      */
-    private $mandateChanged = false;
+    private bool $mandateChanged = false;
     
     /**
      * Original Mandate ID
      * @var string
      */
-    private $originalMandateId = '';
+    private string $originalMandateId = '';
     
     /**
      * Original Mandate IBAN
      * @var string
      */
-    private $originalMandateIban = '';
+    private string $originalMandateIban = '';
     
     /**
      * Original Mandate BIC
      * @var string
      */
-    private $originalMandateBic = '';
+    private string $originalMandateBic = '';
     
     /**
      * @var ValidatorFactory
      */
-    private $validatorFactory;
+    private ValidatorFactory $validatorFactory;
     
     /**
      * Constructor
