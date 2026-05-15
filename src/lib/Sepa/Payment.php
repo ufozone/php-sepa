@@ -52,7 +52,7 @@ class Payment
 
     /**
      * Execution Date
-     * @var \DateTime
+     * @var \DateTimeImmutable
      */
     private $executionDate;
     
@@ -326,16 +326,15 @@ class Payment
     /**
      * Set execution date
      * 
-     * @param \DateTime $executionDate
+     * @param \DateTimeInterface $executionDate
      * @throws PaymentException
      * @return Payment
      */
-    public function setExecutionDate(\DateTime $executionDate) : Payment
+    public function setExecutionDate(\DateTimeInterface $executionDate) : Payment
     {
-        $executionDate = clone $executionDate;
-        $executionDate->setTime(0, 0, 0);
-        
-        if ($executionDate < (new \DateTime())->setTime(0, 0, 0))
+        $executionDate = \DateTimeImmutable::createFromInterface($executionDate);
+        $executionDate = $executionDate->setTime(0, 0, 0);
+        if ($executionDate < (new \DateTimeImmutable())->setTime(0, 0, 0))
         {
             throw new PaymentException('Execution date ({date}) in the past, expected is today or in the future', PaymentException::DATE_PAST, null, ['date' => $executionDate->format('Y-m-d')]);
         }
@@ -347,11 +346,11 @@ class Payment
     /**
      * Get execution date
      * 
-     * @return \DateTime
+     * @return \DateTimeImmutable
      */
-    public function getExecutionDate() : \DateTime
+    public function getExecutionDate() : \DateTimeImmutable
     {
-        return $this->executionDate ?: new \DateTime();
+        return ($this->executionDate ?? new \DateTimeImmutable())->setTime(0, 0, 0); 
     }
     
     /**
@@ -377,7 +376,7 @@ class Payment
         {
             throw new PaymentException('Date ({date}) invalid, must be YYYY-MM-DD', PaymentException::DATE_INVALID, null, ['date' => $date]);
         }
-        $this->setExecutionDate(new \DateTime($date));
+        $this->setExecutionDate(new \DateTimeImmutable($date));
         
         return $this;
     }

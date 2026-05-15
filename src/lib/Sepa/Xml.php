@@ -286,7 +286,7 @@ class Xml
         $isCreditTransfer = ($this->sepa->getType() === Sepa::CREDIT_TRANSFER);
         $ns = 'urn:iso:std:iso:20022:tech:xsd:' . $this->sepa->getPain();
         $messageId = $this->sepa->getId();
-        $creationDateTime = (new \DateTime('now', new \DateTimeZone('Etc/UTC')))->format('Y-m-d\TH:i:s\Z');
+        $creationDateTime = (new \DateTimeImmutable('now', new \DateTimeZone('Etc/UTC')))->format('Y-m-d\TH:i:s\Z');
         $numberOfTransactions = $this->sepa->getNumberOfTransactions();
         $controlSum = $this->sepa->getControlSum();
         $xmlType = ($isCreditTransfer) ? 'CstmrCdtTrfInitn' : 'CstmrDrctDbtInitn';
@@ -308,7 +308,7 @@ class Xml
         $xml->startElement('GrpHdr');
         $xml->writeElement('MsgId', $messageId);
         $xml->writeElement('CreDtTm', $creationDateTime);
-        $xml->writeElement('NbOfTxs', (string)$numberOfTransactions);
+        $xml->writeElement('NbOfTxs', (string) $numberOfTransactions);
         $xml->writeElement('CtrlSum', $this->formatAmount($controlSum));
         // InitgPty
         $xml->startElement('InitgPty');

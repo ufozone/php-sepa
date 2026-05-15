@@ -24,7 +24,7 @@ composer require ufozone/php-sepa
 
 ```php
 $validatorFactory = new \ufozone\phpsepa\Sepa\Validator\Factory();
-$executionDate = new \DateTime('+2 day');
+$executionDate = new \DateTimeImmutable('+2 day');
 
 $sepa = new \ufozone\phpsepa\Sepa\CreditTransfer($validatorFactory);
 $sepa->setInitiator('Max Mustermann');                   // Einreicher
@@ -78,7 +78,7 @@ $xml->download('sepa.xml');
 
 ```php
 $validatorFactory = new \ufozone\phpsepa\Sepa\Validator\Factory();
-$executionDate = new \DateTime('+5 day');
+$executionDate = new \DateTimeImmutable('+5 day');
 
 $sepa = new \ufozone\phpsepa\Sepa\DirectDebit($validatorFactory);
 $sepa->setInitiator('Max Mustermann');                   // Einreicher
