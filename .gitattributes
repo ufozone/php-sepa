@@ -10,3 +10,4 @@ tests/          export-ignore
 *.xml   text eol=lf whitespace=blank-at-eol
 *.xsd   text eol=lf whitespace=blank-at-eol
 *.md    text eol=lf
+* text=auto eol=lf

@@ -425,7 +425,7 @@ class PostalAddress
         }
         if (!$this->validatorFactory->getValidator("CountryCode")->isValid($country))
         {
-            throw new PostalAddressException('Country (' . $country . ') invalid', PostalAddressException::COUNTRY_INVALID);
+            throw new PostalAddressException('Country ({country}) invalid', PostalAddressException::COUNTRY_INVALID, null, ['country' => $country]);
         }
         $this->country = $country;
         

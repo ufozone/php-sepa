@@ -146,7 +146,7 @@ class Transaction
         }
         if (!$this->validatorFactory->getValidator("Id1")->isValid($id))
         {
-            throw new TransactionException('Instruction Identifier (' . $id . ') invalid', TransactionException::INSTRUCTION_ID_INVALID);
+            throw new TransactionException('Instruction Identifier ({id}) invalid', TransactionException::INSTRUCTION_ID_INVALID, null, ['id' => $id]);
         }
         $this->id = $id;
         
@@ -178,7 +178,7 @@ class Transaction
         }
         if (!$this->validatorFactory->getValidator("Id1")->isValid($endToEndId))
         {
-            throw new TransactionException('End-to-End Identifier (' . $endToEndId . ') invalid', TransactionException::END2END_ID_INVALID);
+            throw new TransactionException('End-to-End Identifier ({endToEndId}) invalid', TransactionException::END2END_ID_INVALID, null, ['endToEndId' => $endToEndId]);
         }
         $this->endToEndId = $endToEndId;
         
@@ -261,7 +261,7 @@ class Transaction
         }
         if (!$this->validatorFactory->getValidator("Iban")->isValid($iban))
         {
-            throw new TransactionException('IBAN (' . $iban . ') invalid', TransactionException::IBAN_INVALID);
+            throw new TransactionException('IBAN ({iban}) invalid', TransactionException::IBAN_INVALID, null, ['iban' => $iban]);
         }
         $this->iban = $iban;
         
@@ -293,7 +293,7 @@ class Transaction
         }
         if (!$this->validatorFactory->getValidator("Bic")->isValid($bic))
         {
-            throw new TransactionException('BIC (' . $bic . ') invalid', TransactionException::BIC_INVALID);
+            throw new TransactionException('BIC ({bic}) invalid', TransactionException::BIC_INVALID, null, ['bic' => $bic]);
         }
         $this->bic = str_pad($bic, 11, 'X');
         
@@ -321,7 +321,7 @@ class Transaction
     {
         if (!$this->validatorFactory->getValidator("Amount")->isValid($amount))
         {
-            throw new TransactionException('Amount (' . $amount . ') invalid', TransactionException::AMOUNT_INVALID);
+            throw new TransactionException('Amount ({amount}) invalid', TransactionException::AMOUNT_INVALID, null, ['amount' => $amount]);
         }
         $this->amount = round($amount * 100); // get amount as cents
         
@@ -354,7 +354,7 @@ class Transaction
         }
         if (!$this->validatorFactory->getValidator("Currency")->isValid($currency))
         {
-            throw new TransactionException('Currency (' . $currency . ') invalid', TransactionException::CURRENCY_INVALID);
+            throw new TransactionException('Currency ({currency}) invalid', TransactionException::CURRENCY_INVALID, null, ['currency' => $currency]);
         }
         $this->currency = $currency;
         
@@ -410,7 +410,7 @@ class Transaction
         }
         if (!$this->validatorFactory->getValidator("Purpose")->isValid($purpose))
         {
-            throw new TransactionException('Purpose Code (' . $purpose . ') invalid', TransactionException::PURPOSE_CODE_INVALID);
+            throw new TransactionException('Purpose Code ({purpose}) invalid', TransactionException::PURPOSE_CODE_INVALID, null, ['purpose' => $purpose]);
         }
         $this->purpose = $purpose;
         
@@ -465,7 +465,7 @@ class Transaction
         }
         if (!$this->validatorFactory->getValidator("Id2")->isValid($mandateId))
         {
-            throw new TransactionException('Mandate Identifier (' . $mandateId . ') invalid', TransactionException::MANDATE_ID_INVALID);
+            throw new TransactionException('Mandate Identifier ({mandateId}) invalid', TransactionException::MANDATE_ID_INVALID, null, ['mandateId' => $mandateId]);
         }
         $this->mandateId = $mandateId;
         
@@ -497,7 +497,7 @@ class Transaction
         }
         if (!$this->validatorFactory->getValidator("Date")->isValid($mandateDate))
         {
-            throw new TransactionException('Date of Signature (' . $mandateDate . ') invalid', TransactionException::MANDATE_DATE_INVALID);
+            throw new TransactionException('Date of Signature ({mandateDate}) invalid', TransactionException::MANDATE_DATE_INVALID, null, ['mandateDate' => $mandateDate]);
         }
         $this->mandateDate = $mandateDate;
         
@@ -551,7 +551,7 @@ class Transaction
         }
         if (!$this->validatorFactory->getValidator("Id2")->isValid($originalMandateId))
         {
-            throw new TransactionException('Original Mandate Identifier (' . $originalMandateId . ') invalid', TransactionException::ORIGINAL_MANDATE_ID_INVALID);
+            throw new TransactionException('Original Mandate Identifier ({originalMandateId}) invalid', TransactionException::ORIGINAL_MANDATE_ID_INVALID, null, ['originalMandateId' => $originalMandateId]);
         }
         $this->originalMandateId = $originalMandateId;
         
@@ -583,7 +583,7 @@ class Transaction
         }
         if (!$this->validatorFactory->getValidator("Iban")->isValid($originalMandateIban))
         {
-            throw new TransactionException('Original Mandate IBAN (' . $originalMandateIban . ') invalid', TransactionException::ORIGINAL_MANDATE_IBAN_INVALID);
+            throw new TransactionException('Original Mandate IBAN ({originalMandateIban}) invalid', TransactionException::ORIGINAL_MANDATE_IBAN_INVALID, null, ['originalMandateIban' => $originalMandateIban]);
         }
         $this->originalMandateIban = $originalMandateIban;
         
@@ -615,7 +615,7 @@ class Transaction
         }
         if (!$this->validatorFactory->getValidator("Bic")->isValid($originalMandateBic))
         {
-            throw new TransactionException('Original Mandate BIC (' . $originalMandateBic . ') invalid', TransactionException::ORIGINAL_MANDATE_BIC_INVALID);
+            throw new TransactionException('Original Mandate BIC ({originalMandateBic}) invalid', TransactionException::ORIGINAL_MANDATE_BIC_INVALID, null, ['originalMandateBic' => $originalMandateBic]);
         }
         $this->originalMandateBic = $originalMandateBic;
         

@@ -229,7 +229,7 @@ class Xml
         $xsdFile = __DIR__ . '/../../schema/' . $this->sepa->getPain() . '.xsd';
         if (!is_file($xsdFile))
         {
-            throw new XmlException('Schema file ' . $this->sepa->getPain() . '.xsd not found', XmlException::SCHEMA_FILE_NOT_FOUND);
+            throw new XmlException('Schema file {file}.xsd not found', XmlException::SCHEMA_FILE_NOT_FOUND, null, ['file' => $this->sepa->getPain()]);
         }
         return $xsdFile;
     }
