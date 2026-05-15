@@ -337,7 +337,7 @@ class Payment
         
         if ($executionDate < (new \DateTime())->setTime(0, 0, 0))
         {
-            throw new PaymentException('Execution date must be today or in the future.', PaymentException::DATE_PAST);
+            throw new PaymentException('Execution date ({date}) in the past, expected is today or in the future', PaymentException::DATE_PAST, null, ['date' => $executionDate->format('Y-m-d')]);
         }
         $this->executionDate = $executionDate;
         
