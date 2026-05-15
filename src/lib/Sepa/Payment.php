@@ -335,7 +335,7 @@ class Payment
         if (!($executionDate instanceof \DateTimeImmutable))
         {
             $executionDate = new \DateTimeImmutable(
-                $executionDate->format('Y-m-d H:i:s'),
+                $executionDate->format('Y-m-d'),
                 $executionDate->getTimezone()
             );
         }
