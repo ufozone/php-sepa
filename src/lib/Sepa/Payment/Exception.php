@@ -16,6 +16,7 @@ class Exception extends \ufozone\phpsepa\Sepa\Exception
     const PAYMENT_INFORMATION_ID_INVALID = 2102;
     const DATE_EMPTY = 2201;
     const DATE_INVALID = 2202;
+    const DATE_PAST = 2203;
     const ACCOUNT_NAME_MISSING = 2310;
     const ACCOUNT_NAME_EMPTY = 2311;
     const ACCOUNT_IBAN_MISSING = 2320;

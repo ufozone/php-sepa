@@ -332,6 +332,13 @@ class Payment
      */
     public function setExecutionDate(\DateTime $executionDate) : Payment
     {
+        $executionDate = clone $executionDate;
+        $executionDate->setTime(0, 0, 0);
+        
+        if ($executionDate < (new \DateTime())->setTime(0, 0, 0))
+        {
+            throw new PaymentException('Execution date must be today or in the future.', PaymentException::DATE_PAST);
+        }
         $this->executionDate = $executionDate;
         
         return $this;
