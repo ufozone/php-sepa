@@ -3,7 +3,7 @@
  * Example: localized SEPA exception messages.
  *
  * @author  MichaelP08
- * @since      2026-05-11
+ * @since   2026-05-11
  */
 require __DIR__ . '/../vendor/autoload.php';
 

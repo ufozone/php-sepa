@@ -6,8 +6,8 @@ namespace ufozone\phpsepa\Sepa\Payment;
 /**
  * Extension of base exception to define payment related errors
  * 
- * @author Markus
- * @since      2017-06-13
+ * @author  ufozone
+ * @since   2017-06-13
  * @uses \Exception
  */
 class Exception extends \ufozone\phpsepa\Sepa\Exception

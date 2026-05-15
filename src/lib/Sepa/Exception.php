@@ -6,8 +6,8 @@ namespace ufozone\phpsepa\Sepa;
 /**
  * Extension of base exception to define SEPA related errors
  *
- * @author Markus
- * @since      2017-06-13
+ * @author  ufozone
+ * @since   2017-06-13
  * @uses \Exception
  */
 class Exception extends \Exception
@@ -38,7 +38,7 @@ class Exception extends \Exception
      * @param array<string, mixed> $context Values for placeholder interpolation.
      *
      * @author  MichaelP08
-     * @since      2026-05-11
+     * @since   2026-05-11
      */
     public function __construct(string $message = "", int $code = 0, ?\Throwable $previous = null, array $context = [])
     {
@@ -67,7 +67,7 @@ class Exception extends \Exception
      * @throws \InvalidArgumentException If the locale code is malformed, the file is missing, or it does not return an array.
      *
      * @author  MichaelP08
-     * @since      2026-05-11
+     * @since   2026-05-11
      */
     public static function setTranslations(string $translations) : void
     {
@@ -101,7 +101,7 @@ class Exception extends \Exception
      * falls back to the English default for every code.
      *
      * @author  MichaelP08
-     * @since      2026-05-11
+     * @since   2026-05-11
      */
     public static function clearTranslations() : void
     {
@@ -112,7 +112,7 @@ class Exception extends \Exception
      * @return array<int, string>
      *
      * @author  MichaelP08
-     * @since      2026-05-11
+     * @since   2026-05-11
      */
     public static function getTranslations() : array
     {
@@ -123,7 +123,7 @@ class Exception extends \Exception
      * @return array<string, mixed>
      *
      * @author  MichaelP08
-     * @since      2026-05-11
+     * @since   2026-05-11
      */
     public function getContext() : array
     {
@@ -138,7 +138,7 @@ class Exception extends \Exception
      * logging while getLocalizedMessage() serves UI.
      *
      * @author  MichaelP08
-     * @since      2026-05-11
+     * @since   2026-05-11
      */
     public function getLocalizedMessage() : string
     {
@@ -156,7 +156,7 @@ class Exception extends \Exception
      * @param array<string, mixed> $context
      *
      * @author  MichaelP08
-     * @since      2026-05-11
+     * @since   2026-05-11
      */
     private static function interpolate(string $template, array $context) : string
     {

@@ -6,8 +6,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
 /**
  * Mock Object
  * 
- * @author Markus
- * @since      2017-07-13
+ * @author  ufozone
+ * @since   2017-07-13
  */
 class Mock implements \ufozone\phpsepa\Sepa\Validator
 {

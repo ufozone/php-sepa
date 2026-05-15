@@ -6,8 +6,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
 /**
  * trait to calculate checksums
  * 
- * @author Markus
- * @since      2017-06-15
+ * @author  ufozone
+ * @since   2017-06-15
  */
 trait Checksum
 {

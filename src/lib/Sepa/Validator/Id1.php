@@ -6,8 +6,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
 /**
  * Class to validate Identificator type 1 (with spacer)
  * 
- * @author Markus
- * @since      2017-06-15
+ * @author  ufozone
+ * @since   2017-06-15
  */
 class Id1 implements \ufozone\phpsepa\Sepa\Validator
 {

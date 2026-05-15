@@ -10,7 +10,7 @@
  * values to add another language.
  *
  * @author  MichaelP08
- * @since      2026-05-11
+ * @since   2026-05-11
  */
 
 use \ufozone\phpsepa\Sepa\Exception as SepaException;

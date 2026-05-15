@@ -8,8 +8,8 @@ use \ufozone\phpsepa\Sepa\Validator;
 /**
  * Validator Factory
  * 
- * @author Markus
- * @since      2017-06-16
+ * @author  ufozone
+ * @since   2017-06-16
  */
 class Factory
 {

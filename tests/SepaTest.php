@@ -2,7 +2,7 @@
 
 /**
  * Integrationstests
- * @author Markus
+ * @author  ufozone
  */
 class SepaTest extends PHPUnit\Framework\TestCase
 {

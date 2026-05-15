@@ -6,8 +6,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
 /**
  * Class to validate datetime (YYYY-MM-DD\THH:II:SS)
  * 
- * @author Markus
- * @since      2017-06-15
+ * @author  ufozone
+ * @since   2017-06-15
  */
 class DateTime implements \ufozone\phpsepa\Sepa\Validator
 {

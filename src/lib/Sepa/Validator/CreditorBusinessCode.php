@@ -6,8 +6,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
 /**
  * Validates Creditor Business Code
  * 
- * @author Markus
- * @since      2017-06-15
+ * @author  ufozone
+ * @since   2017-06-15
  */
 class CreditorBusinessCode implements \ufozone\phpsepa\Sepa\Validator
 {

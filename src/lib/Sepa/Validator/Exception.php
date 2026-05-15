@@ -6,8 +6,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
 /**
  * Extension of base exception to define validator related errors
  * 
- * @author Markus
- * @since      2024-08-25
+ * @author  ufozone
+ * @since   2024-08-25
  * @uses \Exception
  */
 class Exception extends \ufozone\phpsepa\Sepa\Exception

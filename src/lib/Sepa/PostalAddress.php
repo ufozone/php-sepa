@@ -9,8 +9,8 @@ use \ufozone\phpsepa\Sepa\Validator\Factory as ValidatorFactory;
 /**
  * Postal Address Class
  * 
- * @author Markus
- * @since      2025-11-07
+ * @author  ufozone
+ * @since   2025-11-07
  */
 class PostalAddress
 {

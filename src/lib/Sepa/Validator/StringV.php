@@ -8,8 +8,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
  * 
  * Since "String" is a forbidden classname, beginning with PHP 7.0, StringV is used!
  * 
- * @author Markus
- * @since      2017-06-15
+ * @author  ufozone
+ * @since   2017-06-15
  */
 class StringV implements \ufozone\phpsepa\Sepa\Validator
 {

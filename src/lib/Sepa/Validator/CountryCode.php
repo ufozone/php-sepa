@@ -6,8 +6,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
 /**
  * Class to validate country code (ISO 3166, Alpha-2 code)
  * 
- * @author Markus
- * @since      2025-11-07
+ * @author  ufozone
+ * @since   2025-11-07
  */
 class CountryCode implements \ufozone\phpsepa\Sepa\Validator
 {

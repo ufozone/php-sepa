@@ -9,7 +9,7 @@ use \ufozone\phpsepa\Sepa\Transaction\Exception as TransactionException;
  * Translations are global state on Sepa\Exception, so each test resets them.
  *
  * @author  MichaelP08
- * @since      2026-05-11
+ * @since   2026-05-11
  */
 class TranslatorTest extends PHPUnit\Framework\TestCase
 {

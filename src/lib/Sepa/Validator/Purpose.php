@@ -11,8 +11,8 @@ namespace ufozone\phpsepa\Sepa\Validator;
  * CBFF    CapitalBuilding    Vermoegenswirksame Leistungen
  * CHAR    Charity            Spende
  * 
- * @author Markus
- * @since      2017-06-15
+ * @author  ufozone
+ * @since   2017-06-15
  * @see https://www.vrb-spangenberg.de/content/dam/f0369-0/neue_homepage/SEPA/Purpose_CODES.pdf
  */
 class Purpose implements \ufozone\phpsepa\Sepa\Validator

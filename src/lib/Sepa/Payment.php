@@ -9,8 +9,8 @@ use \ufozone\phpsepa\Sepa\Validator\Factory as ValidatorFactory;
 /**
  * Payment Class
  * 
- * @author Markus
- * @since      2017-06-08
+ * @author  ufozone
+ * @since   2017-06-08
  */
 class Payment
 {
