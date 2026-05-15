@@ -16,7 +16,7 @@ class Factory
     public function getValidator(string $type) : Validator
     {
         /**
-         * @var Validator[]
+         * @var array<string, Validator>
          */
         static $validators = [];
         $validatorName = '\\ufozone\\phpsepa\\Sepa\\Validator\\' . $type;
@@ -24,7 +24,7 @@ class Factory
         {
             throw new Exception('Unknown type: {type}', Exception::NO_VALID_VALIDATOR, null, ['type' => $type]);
         }
-        if (!isSet($validators[$type]))
+        if (!isset($validators[$type]))
         {
             $validators[$type] = new $validatorName();
         }

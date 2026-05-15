@@ -16,25 +16,21 @@ class Xml
 {
     /**
      * Format XML without indentation and extra space
-     * @var bool
      */
     private bool $compression = false;
     
     /**
      * Temp file
-     * @var string
      */
     private ?string $tmpFile = null;
     
     /**
      * Final file
-     * @var string
      */
     private ?string $fnlFile = null;
     
     /**
-     * SEPA instance
-     * @var Sepa
+     * SEPA Instance
      */
     private ?Sepa $sepa = null;
     

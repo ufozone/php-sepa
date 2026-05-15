@@ -20,46 +20,41 @@ abstract class Sepa
     
     /**
      * Type (Credit Transfer, Direct Debit)
-     * @var int
      */
     protected $type = 0;
     
     /**
      * PAIN Version
-     * @var string
      */
     protected $pain = '';
     
     /**
-     * @var string
+     * Default Scope
      */
     protected $defaultScope = '';
     
     /**
-     * @var string
+     * Default Sequence
      */
     protected $defaultSequence = '';
     
     /**
-     * @var ValidatorFactory
+     * Validator Factory
      */
     protected $validatorFactory;
     
     /**
      * Global Message Identifier
-     * @var string
      */
     private $id = '';
     
     /**
      * Initiator Name
-     * @var string
      */
     private $initiator = '';
     
     /**
      * Payment Collections
-     * @var array
      */
     private $payments = [];
     

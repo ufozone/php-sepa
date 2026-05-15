@@ -16,108 +16,91 @@ class Transaction
 {
     /**
      * Instruction Identifier
-     * @var string
      */
     private string $id = '';
     
     /**
      * End-to-End Identifier
-     * @var string
      */
     private string $endToEndId = '';
     
     /**
      * Debtor/Creditor Name
-     * @var string
      */
     private string $name = '';
 
     /**
      * Debtor/Creditor Postal Address
-     * @var PostalAddress|null
      */
     private ?PostalAddress $postalAddress = null;
     
     /**
      * IBAN
-     * @var string
      */
     private string $iban = '';
     
     /**
      * BIC
-     * @var string
      */
     private string $bic = '';
     
     /**
      * Amount
-     * @var integer
      */
     private int $amount = 0;
     
     /**
      * Currency
-     * @var string
      */
     private string $currency = 'EUR';
     
     /**
      * Ultimate Debtor or Creditor
-     * @var string
      */
     private string $ultimateName = '';
     
     /**
      * Purpose Code
-     * @var string
      */
     private string $purpose = '';
     
     /**
      * Unstructured Reference Text
-     * @var string
      */
     private string $reference = '';
     
     /**
      * Mandate Identifier
-     * @var string
      */
     private string $mandateId = '';
     
     /**
      * Mandate Date
-     * @var string
      */
     private string $mandateDate = '';
     
     /**
      * Mandate Changed
-     * @var bool
      */
     private bool $mandateChanged = false;
     
     /**
      * Original Mandate ID
-     * @var string
      */
     private string $originalMandateId = '';
     
     /**
      * Original Mandate IBAN
-     * @var string
      */
     private string $originalMandateIban = '';
     
     /**
      * Original Mandate BIC
-     * @var string
      */
     private string $originalMandateBic = '';
     
     /**
-     * @var ValidatorFactory
+     * Validator Factory
      */
     private ValidatorFactory $validatorFactory;
     
@@ -323,7 +306,7 @@ class Transaction
         {
             throw new TransactionException('Amount ({amount}) invalid', TransactionException::AMOUNT_INVALID, null, ['amount' => $amount]);
         }
-        $this->amount = round($amount * 100); // get amount as cents
+        $this->amount = (int) round($amount * 100, 0, PHP_ROUND_HALF_UP); // get amount as cents
         
         return $this;
     }

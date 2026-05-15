@@ -16,96 +16,81 @@ class PostalAddress
 {
     /**
      * Department
-     * @var string
      */
     private string $department = '';
 
     /**
      * Sub-department
-     * @var string
      */
     private string $subDepartment = '';
 
     /**
      * Street name
-     * @var string
      */
     private string $streetName = '';
 
     /**
      * Building number
-     * @var string
      */
     private string $buildingNumber = '';
 
     /**
      * Building name
-     * @var string
      */
     private string $buildingName = '';
 
     /**
      * Floor
-     * @var string
      */
     private string $floor = '';
 
     /**
      * Post box
-     * @var string
      */
     private string $postBox = '';
 
     /**
      * Room
-     * @var string
      */
     private string $room = '';
 
     /**
      * Post code
-     * @var string
      */
     private string $postCode = '';
 
     /**
      * Town name
-     * @var string
      */
     private string $townName = '';
 
     /**
      * Town location name
-     * @var string
      */
     private string $townLocationName = '';
 
     /**
      * District name
-     * @var string
      */
     private string $districtName = '';
 
     /**
      * Country sub-division
-     * @var string
      */
     private string $countrySubDivision = '';
 
     /**
      * Country
-     * @var string
      */
     private string $country = '';
 
     /**
      * Address lines
-     * @var array
      */
     private array $addressLine = [];
 
     /**
-     * @var ValidatorFactory
+     * Validator Factory
      */
     private ValidatorFactory $validatorFactory;
 

@@ -16,90 +16,76 @@ class Payment
 {
     /**
      * Payment Information Identifier
-     * @var string
      */
     private string $id = '';
     
     /**
      * Scope (CORE, B2B, INST)
-     * @var string
      */
     private $scope = '';
     
     /**
      * Sequence (OOFF, FRST, RCUR, FNAL)
-     * @var string
      */
     private string $sequence = '';
     
     /**
      * Creditor Identifier
-     * @var string
      */
     private string $creditorId = '';
     
     /**
      * Global Priority
-     * @var string
      */
     private string $priority = '';
     
     /**
      * Batch Booking
-     * @var bool
      */
     private bool $batchBooking = true;
 
     /**
      * Execution Date
-     * @var \DateTimeImmutable
      */
     private ?\DateTimeImmutable $executionDate = null;
     
     /**
      * Creditor or Debtor Name
-     * @var string
      */
     private string $accountName = '';
 
     /**
      * Creditor or Debtor Postal Address
-     * @var PostalAddress|null
      */
     private ?PostalAddress $accountPostalAddress = null;
     
     /**
      * Creditor or Debtor IBAN
-     * @var string
      */
     private string $accountIban = '';
     
     /**
      * Creditor or Debtor BIC
-     * @var string
      */
     private string $accountBic = '';
     
     /**
      * Creditor or Debtor Currency
-     * @var string
      */
     private string $accountCurrency = '';
     
     /**
      * Ultimate Creditor or Debtor Name
-     * @var string
      */
     private string $ultimateName = '';
     
     /**
      * Payment Transactions
-     * @var array
      */
     private array $transactions = [];
     
     /**
-     * @var ValidatorFactory
+     * Validator Factory
      */
     private ValidatorFactory $validatorFactory;
     
