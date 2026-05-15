@@ -22,7 +22,7 @@ class Payment
     /**
      * Scope (CORE, B2B, INST)
      */
-    private $scope = '';
+    private string $scope = '';
     
     /**
      * Sequence (OOFF, FRST, RCUR, FNAL)
