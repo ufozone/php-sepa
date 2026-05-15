@@ -49,12 +49,12 @@ class Payment
      * @var bool
      */
     private $batchBooking = true;
-    
+
     /**
-     * Date (YYYY-MM-DD)
-     * @var string
+     * Execution Date
+     * @var \DateTime
      */
-    private $date = '';
+    private $executionDate;
     
     /**
      * Creditor or Debtor Name
@@ -277,6 +277,19 @@ class Payment
     }
     
     /**
+     * Set batch booking
+     * 
+     * @param bool $batchBooking
+     * @return Payment
+     */
+    public function setBatchBooking(bool $batchBooking) : Payment
+    {
+        $this->batchBooking = $batchBooking;
+        
+        return $this;
+    }
+    
+    /**
      * Enable batch booking
      * 
      * @return Payment
@@ -313,12 +326,42 @@ class Payment
     /**
      * Set execution date
      * 
+     * @param \DateTime $executionDate
+     * @throws PaymentException
+     * @return Payment
+     */
+    public function setExecutionDate(\DateTime $executionDate) : Payment
+    {
+        $this->executionDate = $executionDate;
+        
+        return $this;
+    }
+    
+    /**
+     * Get execution date
+     * 
+     * @return \DateTime
+     */
+    public function getExecutionDate() : \DateTime
+    {
+        return $this->executionDate ?: new \DateTime();
+    }
+    
+    /**
+     * Set execution date
+     * 
+     * @deprecated Deprecated since v2.2, use setExecutionDate instead
      * @param string $date (YYYY-MM-DD)
      * @throws PaymentException
      * @return Payment
      */
+    #[Deprecated(message: 'use setExecutionDate instead', since: 'v2.2')]
     public function setDate(string $date) : Payment
     {
+        if (\PHP_VERSION_ID < 80400)
+        {
+            trigger_error('Function setDate() is deprecated since v2.2, use setExecutionDate instead', E_USER_DEPRECATED);
+        }
         if (!$date = trim($date))
         {
             throw new PaymentException('Date empty', PaymentException::DATE_EMPTY);
@@ -327,7 +370,7 @@ class Payment
         {
             throw new PaymentException('Date ({date}) invalid, must be YYYY-MM-DD', PaymentException::DATE_INVALID, null, ['date' => $date]);
         }
-        $this->date = $date;
+        $this->setExecutionDate(new \DateTime($date));
         
         return $this;
     }
@@ -335,11 +378,17 @@ class Payment
     /**
      * Get execution date
      * 
+     * @deprecated Deprecated since v2.2, use getExecutionDate instead
      * @return string
      */
+    #[Deprecated(message: 'use getExecutionDate instead', since: 'v2.2')]
     public function getDate() : string
     {
-        return $this->date ?: gmdate('Y-m-d');
+        if (\PHP_VERSION_ID < 80400)
+        {
+            trigger_error('Function getDate() is deprecated since v2.2, use getExecutionDate instead', E_USER_DEPRECATED);
+        }
+        return $this->getExecutionDate()->format('Y-m-d');
     }
     
     /**

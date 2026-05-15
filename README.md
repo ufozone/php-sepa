@@ -37,7 +37,7 @@ $payment->setAccountIban('DE02370502990000684712');      // Auftraggeber IBAN
 $payment->setAccountBic('COKSDE33');                     // Auftraggeber BIC
 //$payment->setAccountCurrency('EUR');                     // Kontowaehrung
 //$payment->disableBatchBooking();                         // Sammelbuchung deaktivieren
-$payment->setDate($executionDate->format('Y-m-d'));      // Gewuenschter Ausfuehrungstermin
+$payment->setExecutionDate($executionDate);              // Gewuenschter Ausfuehrungstermin
 
 $transactionPostalAddress = new \ufozone\phpsepa\Sepa\PostalAddress($validatorFactory);
 $transactionPostalAddress->setStreetName('Musterstraße 12a')
@@ -93,7 +93,7 @@ $payment->setAccountBic('HASPDEHHXXX');                  // Auftraggeber BIC
 $payment->setCreditorId('DE98ZZZ09999999999');           // Glaeubigeridentifikationsnummer
 //$payment->setAccountCurrency('EUR');                     // Kontowaehrung
 //$payment->disableBatchBooking();                         // Sammelbuchung deaktivieren
-$payment->setDate($executionDate->format('Y-m-d'));      // Gewuenschter Ausfuehrungstermin
+$payment->setExecutionDate($executionDate);              // Gewuenschter Ausfuehrungstermin
 
 $transactionPostalAddress = new \ufozone\phpsepa\Sepa\PostalAddress($validatorFactory);
 $transactionPostalAddress->setStreetName('Musterstraße 12a')

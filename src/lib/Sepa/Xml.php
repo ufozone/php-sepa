@@ -348,6 +348,7 @@ class Xml
         $pmtClnt = ($isCreditTransfer) ? 'Dbtr' : 'Cdtr';
         $pmtScope = $payment->getScope() ?: $this->sepa->getDefaultScope();
         $pmtSequence = $payment->getSequence() ?: $this->sepa->getDefaultSequence();
+        $executionDate = $payment->getExecutionDate()->format('Y-m-d');
         
         // PmtInf
         $xml->startElement('PmtInf');
@@ -381,13 +382,13 @@ class Xml
         
         if ($isDirectDebit)
         {
-            $xml->writeElement('ReqdColltnDt', $payment->getDate());
+            $xml->writeElement('ReqdColltnDt', $executionDate);
         }
         else
         {
             // ReqdExctnDt
             $xml->startElement('ReqdExctnDt');
-            $xml->writeElement('Dt', $payment->getDate());
+            $xml->writeElement('Dt', $executionDate);
             $xml->endElement(); // ReqdExctnDt
         }
         // Dbtr/Cdtr
