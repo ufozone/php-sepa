@@ -332,7 +332,13 @@ class Payment
      */
     public function setExecutionDate(\DateTimeInterface $executionDate) : Payment
     {
-        $executionDate = \DateTimeImmutable::createFromInterface($executionDate);
+        if (!($executionDate instanceof \DateTimeImmutable))
+        {
+            $executionDate = new \DateTimeImmutable(
+                $executionDate->format('Y-m-d H:i:s'),
+                $executionDate->getTimezone()
+            );
+        }
         $executionDate = $executionDate->setTime(0, 0, 0);
         if ($executionDate < (new \DateTimeImmutable())->setTime(0, 0, 0))
         {
