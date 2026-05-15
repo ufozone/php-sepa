@@ -86,7 +86,7 @@ $sepa->setId('MSG-20240224-1');                          // Nachrichtenreferenz
 
 $payment = new \ufozone\phpsepa\Sepa\Payment($validatorFactory);
 //$payment->setScope('CORE');                              // Lastschriftart (CORE oder B2B)
-$payment->setSequenceType('OOFF');                       // Sequenztyp (FRST, RCUR, OOFF, FNAL)
+$payment->setSequence('OOFF');                           // Sequenztyp (FRST, RCUR, OOFF, FNAL)
 $payment->setAccountName('Max Mustermann');              // Auftraggeber (Creditor)
 $payment->setAccountIban('DE02200505501015871393');      // Auftraggeber IBAN
 $payment->setAccountBic('HASPDEHHXXX');                  // Auftraggeber BIC
